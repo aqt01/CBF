@@ -7,8 +7,3 @@ from .models import Author
 admin.site.register(Preach)
 admin.site.register(Social_media)
 admin.site.register(Author)
-
-
-
-
-# Register your models here.

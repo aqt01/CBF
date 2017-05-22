@@ -148,7 +148,9 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
-    'CBF'
+    'CBF',
+    'preaches',
+    'events'
 )
 
 LANGUAGES = (
@@ -198,7 +200,7 @@ DATABASES = {
 }
 
 MIGRATION_MODULES = {
-    
+
 }
 
 THUMBNAIL_PROCESSORS = (
