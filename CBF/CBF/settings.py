@@ -148,7 +148,9 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
-    'CBF'
+    'CBF',
+    'blog',
+    'preaches'
 )
 
 LANGUAGES = (
