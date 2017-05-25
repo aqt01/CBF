@@ -150,7 +150,8 @@ INSTALLED_APPS = (
     'djangocms_video',
     'CBF',
     'blog',
-    'preaches'
+    'preaches',
+    'events'
 )
 
 LANGUAGES = (
@@ -200,7 +201,7 @@ DATABASES = {
 }
 
 MIGRATION_MODULES = {
-    
+
 }
 
 THUMBNAIL_PROCESSORS = (
