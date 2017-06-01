@@ -20,6 +20,13 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^', include('cms.urls')),
+
+    url(r'^predicas/', include('preaches.urls', namespace='preaches')),
+    url(r'^eventos/', include('events.urls', namespace='events')),
+    url(r'^mensajes/', include('blog.urls', namespace='messages')),
+    #url(r'^libros/', include('books.urls', namespace='books')), TODO: Add books fetched by hashtag
+
+
 )
 
 # This is only needed when using runserver.

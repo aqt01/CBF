@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from preaches.models import Tag
 
 class Event(models.Model):
     name = models.CharField(verbose_name='Nombre del evento',max_length=60)
@@ -9,3 +10,4 @@ class Event(models.Model):
     img = models.ImageField(verbose_name='Imagen del evento')
     location = models.TextField(verbose_name='Ubicacion del evento')
     gmap_link = models.URLField(verbose_name='Link de Google Maps', blank=True, default='',help_text='Link externo de Googlemaps del evento')
+    tags = models.ManyToManyField(Tag)
