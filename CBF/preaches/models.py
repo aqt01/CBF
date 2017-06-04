@@ -52,4 +52,3 @@ class Preach(models.Model):
     url = models.URLField(max_length=200)
     img = models.ImageField('Imagen',upload_to='images')
     is_published = models.BooleanField(verbose_name="Publicado?",default=True)
-
