@@ -210,3 +210,11 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+# CELERY STUFF
+CELERY_BROKER_URL = 'amqp://CBF:CristoCentro@localhost:5672/CBF'
+CELERY_RESULT_BACKEND = 'amqp://CBF:CristoCentro@localhost:5672/CBF'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Santo_Domingo'
