@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags static compress menu_tags cache %}
+
+    {% block css %} 
+    <meta charset="UTF-8">
+    <!-- Style css -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/uikit.min.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/uikit.css" %}"> 
+    <!-- start:slideshow -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.gradient.css" }%"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.gradient.min.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.almost-flat.css" %}">     
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.almost-flat.min.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.min.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.css" %}"> <!-- end:slideshow -->
+    <!-- start:Font awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/css/font-awesome.min.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/css/font-awesome.css" }%"> 
+    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/FontAwesome.otf" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.svg" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.woff" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" %}"> <!-- end:Font awesome -->
+    <!-- start: font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> <!-- end: font -->
+    <!-- start: sticky -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.almost-flat.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.gradient.css"  %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.gradient.min.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.min.css"  %}"> <!-- end:sticky -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">   
+    {% endblock %}
+
+    {% block jquery %}
+    <!-- start:jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script> <!-- end:jquery -->
+    <!-- start: all javascript uikit specific -->
+    <script src="{% static "js/uikit.min.js" %}"> </script>
+    <script src="{% static "js/uikit.js" %}"> </script>
+    <script src="{% static "js/components/slideshow.min.js" %}"> </script>
+    <script src="{% static "js/components/slideshow.js"  %}"> </script>
+    <script src="{% static "js/components/slideshow-fx.js" %}"> </script>
+    <script src="{% static "js/components/slideshow-fx.min.js" %}"> </script>
+    <script src="{% static "js/components/sticky.js" %}"> </script>
+    <script src="{% static "js/components/sticky.min.js" %}"> </script> <!-- end: all javascript uikit specific -->
+    <!-- start:slider -->
+    <script src="{% static "js/components/slider.js" %}"> </script>
+    <script src="{% static "js/components/slider.min.js" %}"> </script>
+    <!-- start: parallax-->
+    <script src="{% static "js/components/parallax.js" %}"> </script>
+    <script src="{% static "js/components/parallax.min.js" %}"> </script>
+ 
+    <script src="{% static "js/jquery.min.js" %}"> </script> <!-- end:slider -->
+    <script src="{% static "js/menu.js" %}"> </script> 
+    {% endblock %}
+    
+    {% block menu %}
+    <!--  start: main menu -->
+    <div data-uk-sticky>
+      <nav id="main-nav" class="uk-navbar">
+        <div class="uk-container uk-container-center" >
+          <ul id="logo-nav" class="uk-navbar-nav uk-margin-large-top uk-margin-large-bottom ">
+            {% show_menu 0 100 100 100 "CBF/components/logo-menu.html" %}  
+          </ul>
+
+          <div id="menu-nav" class="uk-navbar-flip uk-margin-large-top uk-margin-large-bottom">
+            <ul class="uk-navbar-nav">
+              {% show_menu 0 100 100 100 "CBF/components/menu.html" %} 
+            </ul>
+          </div>
+        </div>
+      </nav> 
+    </div> <!--  end: main menu -->
+    {% endblock %}
+
+    {% block content %} {% endblock %}
+    
+    {% block footer %}
+    <!-- start: Footer -->
+    <hr class="uk-grid-divider uk-margin-large-top uk-margin-large-bottom"></hr>
+    <footer class=" uk-container uk-grid tm-footer  uk-margin-large-left uk-margin-large-right">      
+      <div class="uk-width-1-3 uk-text-center">
+        <h3>+809 200 8924</h3>
+        <p>info@comunidadbf.org</p>
+        <div class="uk-flex uk-flex-center uk-flex-center">
+          <a class="uk-icon-twitter uk-icon-small icon-footer" href="https://twitter.com/ComunidadBF"></a>
+          <a class="uk-icon-facebook uk-icon-small footer-icon" href="https://www.facebook.com/CBiblicadeFe/" ></a>
+          <a class="uk-icon-instagram uk-icon-small footer-icon" href="https://www.instagram.com/comunidadbf/"></a>
+        </div>
+      </div>
+
+      <div class="uk-width-1-3 tm-address-lines uk-text-center uk-text-justify">
+        <p> Calle Rosario esq. San Juan Bautista </p>
+        <p> Sector Renacimiento, Santo Domingo</p>
+        <p> Republica Dominicana </p>
+      </div>
+      
+      <div class="uk-width-1-3 tm-address-lines">
+        <div class="uk-flex uk-flex-center ">
+          <p > Contribuye al avance de este ministerio </p>
+          <div>
+            <a class="uk-button uk-button-success"> Donar  </a>
+          </div>
+        </div>
+      </div>
+    </footer> <!-- end: footer -->
+
+    <section class="uk-container uk-margin-large-bottom uk-margin-large-left uk-margin-large-right">
+      <div class="uk-flex uk-flex-space-between">
+        <a href="/"><img src="{% static "img/logo-no-text.png" %}"  height="80px" width="100px" alt="logo"/></a>
+        <h5>© 2017 -  Comunidad Biblica De Fe</h5>
+      </div>
+    </section>
+  </div>
+  <!-- start:modals -->
+  <section>
+    <div id="search-modal" class="uk-modal">
+      <div class="uk-modal-dialog uk-modal-dialog-blank uk-height-viewport">
+        <div class="uk-flex uk-flex-column uk-flex-center uk-flex-end uk-flex-middle uk-flex-order-last">
+          <img src="{% static "img/logo-no-text.png" %}"  height="240px" width="300px" alt="logo"/>
+          <div> 
+            <form class="uk-form uk-margin-top uk-margin-bottom">
+              <input type="text" placeholder="Buscar">
+              <a id="nav-search-icon" class="uk-icon-button uk-icon-small uk-icon-search uk-text-center uk-text-bottom" href="#search-modal" data-uk-modal> </a>
+            </form> 
+          </div>
+          <div>
+            <h4 class="uk-text-center uk-margin-top"> Temas populares </h4>
+            <!-- start: popular tags -->
+            <div class="popular-tag-container">
+              <div class="uk-margin-top uk-margin-bottom uk-flex uk-flex-start uk-flex-space-around ">
+                <a class="uk-badge uk-badge-success"  href=""> Proverbios 5.15  </a> 
+                <a class="uk-badge uk-badge-success"  href=""> Estudio Familiar  </a> 
+                <a class="uk-badge uk-badge-success"  href=""> Malaquias 2.5  </a> 
+                <a class="uk-badge uk-badge-success"  href=""> Fe  </a> 
+              </div>   <!-- end: popular tags -->
+           </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </section> <!-- end:modals -->
+  {% endblock %}

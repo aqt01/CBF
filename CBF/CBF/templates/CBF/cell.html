@@ -1,0 +1,65 @@
+{% extends "CBF/base.html" %}
+
+{% load cms_tags sekizai_tags static compress menu_tags cache staticfiles %}
+
+{% block content %}
+ 
+
+  <div class="uk-container uk-container-center">
+   
+  {% block last_message %}
+  {% include "CBF/components/last-message.html" %}    
+  {% endblock last_message  %}
+
+
+  {% block big-cards %}
+  {% include "CBF/components/big-cards.html" %}    
+  {% endblock big-cards  %}
+
+
+  {% with request.current_page.bannerextension.sermon_banner_text as banner_text  %}
+  {% with request.current_page.bannerextension.sermon_banner_title as banner_title  %}
+
+    {% block sermon_banner %}
+    {% include "CBF/components/banner.html" with banner_text=banner_text banner_title=banner_title %}    
+    {% endblock sermon_banner %}
+    
+  {% endwith %}
+  {% endwith %}
+
+
+
+  {% block sermon_cards %}
+  {% include "CBF/components/cards.html" %}    
+  {% endblock sermon_cards %}
+
+
+  {% with request.current_page.bannerextension.thought_banner_text as banner_text  %}
+  {% with request.current_page.bannerextension.thought_banner_title as banner_title  %}
+
+    {% block thought_banner %}
+    {% include "CBF/components/banner.html" with banner_text=banner_text banner_title=banner_title %}    
+    {% endblock thought_banner %}
+
+  {% endwith %}  
+  {% endwith %}  
+
+
+  {% block thought_cards %}
+  {% include "CBF/components/cards.html" %}    
+  {% endblock thought_cards %}
+
+  </div> <!-- end: container -->
+  
+  {% with request.current_page.bannerextension.followus_banner_title as followus_banner_title  %}
+  {% with request.current_page.bannerextension.followus_banner_text as followus_banner_text  %}
+
+  {% block follow-us %}
+  {% include "CBF/components/follow-us.html" with followus_title=followus_banner_title followus_text=followus_banner_text %}    
+  {% endblock follow-us %}
+
+  {% endwith %}
+  {% endwith %}
+
+
+{% endblock content %}

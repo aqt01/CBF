@@ -1,0 +1,18 @@
+{% load cms_tags static %}
+
+<!-- start: sermon-banner -->
+      <div class="uk-container uk-container-center">
+        <div class="uk-flex uk-flex-order-first uk-flex-column uk-flex-space-around "> 
+          <figure class="uk-overlay">
+            <img class="main-image" src="{% static "img/cbf-banner.png" %}" width="100%" height="20%" alt=""> 
+            <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-middle uk-flex-space-around uk-text-center">
+                <div class="uk-container"> </div> 
+                <div class="uk-container">
+                  <h1 class="section-title"> {{ banner_title }} </h1>
+                  <h3 class="section-title"> {{ banner_text }} </h3>
+                </div>
+              </figcaption>
+          </figure>
+        </div>
+      </div> <!-- end: sermon-banner -->
+

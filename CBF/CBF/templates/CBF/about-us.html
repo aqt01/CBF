@@ -1,0 +1,40 @@
+{% extends "CBF/base.html" %}
+
+{% load cms_tags sekizai_tags static compress menu_tags cache %}
+
+{% block content %}
+
+  {% with request.current_page.bannerextension.sermon_banner_text as banner_text  %}
+  {% with request.current_page.bannerextension.sermon_banner_title as banner_title  %}
+
+    {% block banner %}
+    {% include "CBF/components/banner.html" with banner_text=banner_text banner_title=banner_title %}    
+    {% endblock banner %}
+   
+  {% endwith %}
+  {% endwith %}
+
+    {% block principles %}
+    {% include "CBF/components/principles.html" %}    
+    {% endblock principles %}
+  
+    {% block main_leader_header %}
+    {% include "CBF/components/leaders-header-text.html" %}    
+    {% endblock main_leader_header %}
+ 
+    {% block main_leaders %}
+    {% include "CBF/components/leaders.html" %}    
+    {% endblock main_leaders %}
+     
+    {% block leaders_header %}
+    {% include "CBF/components/leaders-header-text.html" %}    
+    {% endblock leaders_header %}
+   
+    {% block leaders %}
+    {% include "CBF/components/leaders.html" %}    
+    {% endblock leaders %}
+ 
+
+{% endblock content %}
+
+

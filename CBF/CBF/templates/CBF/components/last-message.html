@@ -1,0 +1,40 @@
+{% load  static  %}
+<!-- start: last message -->
+      <div class="uk-grid uk-grid-match uk-grid-collapse uk-margin-large-bottom uk-margin-large-top"
+        data-uk-grid-match="{target:'.latest-panel'}">
+        <div class="uk-width-medium-3-5 uk-margin-large-bottom ">
+          <img width="100%" height="%25" src="{{ last_element.img.url }}" alt="">
+        </div>
+        <div class="uk-width-medium-2-5 latest-panel">
+				  <div class="uk-panel uk-panel-box">
+            <h1 id="message-last-title"> {{ last_element.name }} </h1> <!-- event title -->
+            <h4 class='card-date'> {{ last_element.date_created|date:"d/m/Y" }} </h4>                
+            {% for tag in last_element.tags.all %}
+              <a class="uk-badge uk-badge-success card-tag"  href=""> {{ tag.name }} </a>  
+            {% endfor %}
+            <h3 class="latest-card-content"> {{ last_element.summary }}  </h3>
+            <div class="uk-margin-large-top"> </div>
+            <div class="uk-flex uk-flex-middle uk-flex-order-first uk-flex-row">
+              <img class="profile-image" width="50px" height="50px" src ="{% static "img/victor-medina.png" %}">
+              <h5 class="detail-preacher-title"> {{ last_element.author.name }} </h5>
+            </div>
+            <div class="uk-margin-top uk-margin-bottom"> </div>
+            <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-row">
+              {% for social_media in last_element.author.socialmedia_set.all %}
+                {% if social_media.name == 0 %}
+                <a class="uk-icon-button uk-icon-large uk-icon-facebook" href="{{ social_media.url }}"> </a> 
+                {% endif %}
+                {% if social_media.name == 1 %}
+                <a class="uk-icon-button uk-icon-large uk-icon-instagram" href=" {{ social_media.url }}"> </a> 
+                {% endif %}
+                {% if social_media.name == 2 %}
+                <a class="uk-icon-button uk-icon-large uk-icon-twitter" href=" {{ social_media.url }}"> </a> 
+                {% endif %}
+              {% endfor %}
+              <a class="uk-icon-button uk-icon-large uk-icon-inbox" href="mailto:{{ last_element.author.email }}"> </a> 
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- end: last message -->
+

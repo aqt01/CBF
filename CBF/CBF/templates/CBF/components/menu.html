@@ -1,0 +1,12 @@
+{% load cms_tags sekizai_tags static compress menu_tags cache %}
+
+ <li> 
+   <div class="uk-flex uk-flex-bottom">
+     <a id="nav-search-icon" class="uk-icon-button uk-icon-small uk-icon-search uk-text-center uk-text-bottom" href="#search-modal" data-uk-modal> </a> 
+   </div> 
+ </li>
+ 
+ {% for child in children %}
+   <li  class=" uk-active uk-parent uk-align-center" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
+   <li> <a href="{{ child.get_absolute_url }}"> {{ child.title }}  </a></li>
+ {% endfor %}

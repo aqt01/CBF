@@ -26,16 +26,18 @@
                 width: 20%;
             }
         </style>
+
         {% render_block "css" %}
+        {% block css %} {% endblock %}
+        {% block jquery %} {% endblock %}
+        {% cms_toolbar %}
+
+        {% block menu %} {% endblock %}
+
     </head>
     <body>
-        {% cms_toolbar %}
-        <div class="container">
-            <ul class="nav">
-                {% show_menu 0 100 100 100 %}
-            </ul>
-            {% block content %}{% endblock content %}
-        </div>
+        {% block content %}{% endblock content %}
         {% render_block "js" %}
     </body>
+  {% block footer%} {% endblock %}
 </html>

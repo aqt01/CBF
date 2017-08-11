@@ -1,0 +1,38 @@
+{% load cms_tags static %}
+
+ <!-- start: slideshow -->
+    <div class="uk-slidenav-position uk-margin-large-bottom" data-uk-slideshow="{autoplay:true, autoplayInterval:4000, animation: 'random-fx'}">
+      <ul class="uk-slideshow uk-overlay-active" style="height: 286px;" >
+        <li data-slideshow-slide="img" aria-hidden="false" class="uk-active" style="height: 286px;"><div
+        class="uk-cover-background uk-position-cover" style="background-image: url({% static "img/slider-1.jpg" %});"></div>
+          <canvas width="800" height="400" style="width: 100%; height: auto; opacity: 0.5;"></canvas>
+          <div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-flex uk-flex-center uk-flex-middle uk-text-center">
+            <div>
+              <hr class="uk-grid-divider"></hr>
+              <h1> Y esta es la vida eterna: que te conozcan a ti, el único <b> Dios verdadero</b>,<br> Y a  <strong >
+                  Jesucristo  </strong>, a quien has  <strong>  enviado  </strong> </h1> <h5 id="passage">- Juan 3.16 </h5>
+              <hr class="uk-grid-divider"></hr>
+              <a id="first-button" class="uk-button uk-button-primary main-buttons" href="cbf.html"> Conócenos </a>
+              <a id="second-button" class="uk-button uk-button-primary main-buttons" href="thoughts.html"> Reflexiones </a>
+            </div>
+          </div>
+        </li>
+        <li data-slideshow-slide="img" aria-hidden="false" class="uk-active" style="height: 286px;"><div
+            class="uk-cover-background uk-position-cover" style="background-image: url({% static "img/slider-2.jpg" %});"></div>
+          <canvas width="800" height="400" style="width: 100%; height: auto; opacity: 0.5;"></canvas>
+          <div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-flex uk-flex-center uk-flex-middle uk-text-center">
+            <div>
+              <hr class="uk-grid-divider"></hr>
+              <h1> Y esta es la vida eterna: que te conozcan a ti, el único <b> Dios verdadero</b>,<br> Y a <mark> <strong id="main-word"> Jesucristo  </strong> </mark>, a quien has  <strong> <u> <i> enviado</u></i></strong>. </h1> <h5 id="passage">- Juan 3.16 </h5>
+              <hr class="uk-grid-divider"></hr>
+                <button id="first-button" class="uk-button uk-button-primary main-buttons"> Cónocenos </button>
+                <button id="second-button" class="uk-button uk-button-primary main-buttons"> Mira nuestras prédicas </button>
+                <a id="third-button" class="uk-button uk-button-primary main-buttons" href="#siguenos"> Síguenos</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="color: rgba(255,255,255,0.4)"></a>
+      <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="color: rgba(255,255,255,0.4)"></a>
+    </div> <!-- end: slideshow--> 
+ 

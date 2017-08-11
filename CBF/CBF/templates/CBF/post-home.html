@@ -1,0 +1,20 @@
+{% extends "CBF/base.html" %}
+
+{% load cms_tags sekizai_tags static compress menu_tags cache staticfiles %}
+
+{% block content %}
+ 
+  <!-- start: container -->
+  <div class="uk-container uk-container-center">
+   
+  {% block last_message %}
+  {% include "CBF/components/last-message.html" %}    
+  {% endblock last_message  %}
+
+  {% block cards %}
+  {% include "CBF/components/cards.html" %}    
+  {% endblock cards %}
+
+  </div> <!-- end: container -->
+  
+{% endblock content %}
