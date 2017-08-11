@@ -1,15 +1,16 @@
 from cms.toolbar_pool import toolbar_pool
 from cms.extensions.toolbar import ExtensionToolbar
 from django.utils.translation import ugettext_lazy as _
-from .models import BannerExtension, SliderExtension, PrincipleGroupExtension
+from .models import HomeBanner, Slider, PrincipleGroup
+from .models import Principle, SliderImage
 from cms.utils import get_language_list
 from cms.models.pagemodel import Page
 
 
 @toolbar_pool.register
-class BannerExtensionToolbar(ExtensionToolbar):
+class HomeBannerToolbar(ExtensionToolbar):
     # defines the model for the current toolbar
-    model = BannerExtension
+    model = HomeBanner
 
     def populate(self):
         # setup the extension toolbar with permissions and sanity checks
@@ -46,9 +47,9 @@ class BannerExtensionToolbar(ExtensionToolbar):
 
 # The the slider attached to the first page created
 @toolbar_pool.register
-class SliderExtensionToolbar(ExtensionToolbar):
+class SliderToolbar(ExtensionToolbar):
     # defines the model for the current toolbar
-    model = SliderExtension
+    model = Slider
 
     def populate(self):
         # setup the extension toolbar with permissions and sanity checks
@@ -84,12 +85,10 @@ class SliderExtensionToolbar(ExtensionToolbar):
                     )
 
 
-
-
 @toolbar_pool.register
-class SliderExtension(ExtensionToolbar):
+class PrincipleGroupToolbar(ExtensionToolbar):
     # defines the model for the current toolbar
-    model = SliderExtension
+    model = PrincipleGroup
 
     def populate(self):
         # setup the extension toolbar with permissions and sanity checks
@@ -101,14 +100,16 @@ class SliderExtension(ExtensionToolbar):
             page_extension, url = self.get_page_extension_admin()
             if url:
                 # adds a toolbar item in position 0 (at the top of the menu)
-                current_page_menu.add_modal_item(_('Slider'), url=url,
+                current_page_menu.add_modal_item(_('Principios'), url=url,
                     disabled=not self.toolbar.edit_mode, position=0)
 
 
+
+'''
 @toolbar_pool.register
-class PrincipleExtensionToolbar(ExtensionToolbar):
+class PrincipleGroupToolbar(ExtensionToolbar):
     # defines the model for the current toolbar
-    model = PrincipleGroupExtension
+    model = PrincipleGroup
 
     def populate(self):
         # setup the extension toolbar with permissions and sanity checks
@@ -143,3 +144,5 @@ class PrincipleExtensionToolbar(ExtensionToolbar):
                     sub_menu.add_modal_item(
                         'Editar principios en %s' % title, url=url, disabled=not self.toolbar.edit_mode
                     )
+
+'''
