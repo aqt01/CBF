@@ -15,8 +15,16 @@
             <h3 class="latest-card-content"> {{ last_element.summary }}  </h3>
             <div class="uk-margin-large-top"> </div>
             <div class="uk-flex uk-flex-middle uk-flex-order-first uk-flex-row">
-              <img class="profile-image" width="50px" height="50px" src ="{% static "img/victor-medina.png" %}">
-              <h5 class="detail-preacher-title"> {{ last_element.author.name }} </h5>
+              {% if last_element.location != None %}
+                <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
+                <h5 class="location-info"> {{ last_element.location }} </h5>
+              {% else %}
+                <img class="profile-image" width="50px" height="50px" src ="{% static "img/victor-medina.png" %}">
+
+                <h5 class="detail-preacher-title"> {{ last_element.author.name }} </h5>
+              {% endif  %}
+
+
             </div>
             <div class="uk-margin-top uk-margin-bottom"> </div>
             <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-row">

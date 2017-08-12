@@ -30,7 +30,9 @@
             <h5 class='card-date'> {{ element.date_created|date:"d/m/Y" }}  </h6>
             <h3 class="card-content"> {{ element.summary }} </h3>
             <div class="left"> 
-              <img class="profile-image" width="50px" height="50px" src="{{ element.img.url }}"> 
+              <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
+              <h5 class="right location-info"> {{ element.location }} </h5>
+
             </div>
           </div>
         </div>  <!-- end: big cards-->
