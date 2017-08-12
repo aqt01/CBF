@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'events',
     'books',
     'widgets',
+    'home',
     'fontawesome',
     'compressor',
     'django_extensions'
