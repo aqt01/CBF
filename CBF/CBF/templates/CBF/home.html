@@ -4,64 +4,75 @@
 
 {% block content %}
  
+{% with request.current_page.slider.sliderimage_set.all as slides  %}
+
   {% block slideshow %}
-  {% include "CBF/components/slideshow.html" %}    
+    {% include "CBF/components/slideshow.html" with slides=slides %}    
   {% endblock slideshow  %}
 
+{% endwith %}
+
+
   <div class="uk-container uk-container-center">
-   
-  {% block last_message %}
-  {% include "CBF/components/last-message.html" %}    
-  {% endblock last_message  %}
 
+    {% with last_event as element %}
 
-  {% block big-cards %}
-  {% include "CBF/components/big-cards.html" %}    
-  {% endblock big-cards  %}
+      {% block last_message %}
+        {% include "CBF/components/last-message.html" with element=element %}    
+      {% endblock last_message  %}
 
+    {% endwith %}
 
-  {% with request.current_page.bannerextension.sermon_banner_text as banner_text  %}
-  {% with request.current_page.bannerextension.sermon_banner_title as banner_title  %}
+    {% with events as elements  %}
 
-    {% block sermon_banner %}
-    {% include "CBF/components/banner.html" with banner_text=banner_text banner_title=banner_title %}    
-    {% endblock sermon_banner %}
+      {% block big-cards %}
+        {% include "CBF/components/big-cards.html" with elements=elements %}
+      {% endblock big-cards  %}
     
-  {% endwith %}
-  {% endwith %}
+    {% endwith %}
+
+    {% with request.current_page.bannergroup.banner_set.all.0 as banner  %}
+
+      {% block sermon_banner %}
+        {% include "CBF/components/banner.html" with banner=banner %}    
+      {% endblock sermon_banner %}
+      
+    {% endwith %}
+    
+    {% with sermons as elements  %}
+
+      {% block sermon_cards %}
+        {% include "CBF/components/cards.html" with elements=elements %}    
+      {% endblock sermon_cards %}
+    
+    {% endwith %}
 
 
+    {% with request.current_page.bannergroup.banner_set.all.1 as banner  %}
 
-  {% block sermon_cards %}
-  {% include "CBF/components/cards.html" %}    
-  {% endblock sermon_cards %}
+      {% block thought_banner %}
+        {% include "CBF/components/banner.html" with banner=banner %}    
+      {% endblock thought_banner %}
 
+    {% endwith %}  
 
-  {% with request.current_page.bannerextension.thought_banner_text as banner_text  %}
-  {% with request.current_page.bannerextension.thought_banner_title as banner_title  %}
+    {% with thoughts as elements  %}
 
-    {% block thought_banner %}
-    {% include "CBF/components/banner.html" with banner_text=banner_text banner_title=banner_title %}    
-    {% endblock thought_banner %}
-
-  {% endwith %}  
-  {% endwith %}  
-
-
-  {% block thought_cards %}
-  {% include "CBF/components/cards.html" %}    
-  {% endblock thought_cards %}
+      {% block thought_cards %}
+        {% include "CBF/components/cards.html" with elements=elements %}    
+      {% endblock thought_cards %}
+    
+    {% endwith %}  
 
   </div> <!-- end: container -->
   
-  {% with request.current_page.bannerextension.followus_banner_title as followus_banner_title  %}
-  {% with request.current_page.bannerextension.followus_banner_text as followus_banner_text  %}
+  
+  {% with request.current_page.bannergroup.banner_set.all.2 as banner  %}
+  
+    {% block follow-us %}
+      {% include "CBF/components/follow-us.html" with banner=banner %}    
+    {% endblock follow-us %}
 
-  {% block follow-us %}
-  {% include "CBF/components/follow-us.html" with followus_title=followus_banner_title followus_text=followus_banner_text %}    
-  {% endblock follow-us %}
-
-  {% endwith %}
   {% endwith %}
 
 

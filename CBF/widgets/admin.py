@@ -1,11 +1,18 @@
 from django.contrib import admin
 from cms.extensions import PageExtensionAdmin
-from .models import Banner, SliderImage, HomeBanner
+from .models import Banner, SliderImage, BannerGroup
 from .models import Slider, PrincipleGroup, Principle
 
 
-class HomeBannerAdmin(PageExtensionAdmin):
-    pass
+class BannerInLine(admin.TabularInline):
+    model = Banner
+    extra = 1
+
+
+class BannerGroupAdmin(PageExtensionAdmin):
+    inlines = [
+        BannerInLine,
+    ]
 
 
 class SliderImageInLine(admin.TabularInline):
@@ -14,16 +21,26 @@ class SliderImageInLine(admin.TabularInline):
 
 
 class SliderAdmin(PageExtensionAdmin):
-    pass
+    inlines = [
+        SliderImageInLine,
+    ]
+
+
+class PrincipleInLine(admin.TabularInline):
+    model = Principle
+    extra = 1
 
 
 class PrincipleGroupAdmin(PageExtensionAdmin):
-    pass
+    inlines = [
+        PrincipleInLine,
+    ]
 
 
-admin.site.register(HomeBanner, HomeBannerAdmin)
+admin.site.register(BannerGroup, BannerGroupAdmin)
 admin.site.register(Banner)
 admin.site.register(Slider, SliderAdmin)
 admin.site.register(SliderImage)
-admin.site.register(Principle)
 admin.site.register(PrincipleGroup, PrincipleGroupAdmin)
+admin.site.register(Principle)
+

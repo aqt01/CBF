@@ -7,58 +7,42 @@ from CBF.abstract_models import CommonWidgetInfo
 from fontawesome.fields import IconField
 
 
+class PrincipleGroup(PageExtension):
+    pass
+
+
 class Principle(models.Model):
     title = models.CharField(verbose_name="Titulo", max_length=150, blank=True)
     content = models.CharField(verbose_name="Contenido", max_length=150, blank=True)
     icon = IconField()
+    principles = models.ForeignKey(PrincipleGroup, blank=True)
 
     def __str__(self):
         return self.title
 
 
-class PrincipleGroup(PageExtension):
-    principles = models.ManyToManyField(Principle, blank=True)
-
-    def copy_relations(self, oldinstance, language):
-        for principle in oldinstance.principles.all():
-            principle.pk = None
-            principle.principlesgroupextension = self
-            principle.save()
+class BannerGroup(PageExtension):
+    pass
 
 
-class Banner(PageExtension, CommonWidgetInfo):
-
-    def __str__(self):
-        return self.name
-
-
-class HomeBanner(PageExtension):
-    banners = models.ManyToManyField(Banner, blank=True)
-
-    def copy_relations(self, oldinstance, language):
-        for banner in oldinstance.banners.all():
-            banner.pk = None
-            banner.homebannerextension = self
-            banner.save()
-
-
-class SliderImage(CommonWidgetInfo):
+class Banner(CommonWidgetInfo):
+    banners = models.ForeignKey(BannerGroup, blank=True)
 
     def __str__(self):
         return self.title
 
 
 class Slider(PageExtension):
-    slides = models.ManyToManyField(SliderImage, blank=True)
+    pass
 
-    def copy_relations(self, oldinstance, language):
-        for slider in oldinstance.slides.all():
-            slider.pk = None
-            slider.sliderextension = self
-            slider.save()
+
+class SliderImage(CommonWidgetInfo):
+    slider = models.ForeignKey(Slider, blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 extension_pool.register(PrincipleGroup)
-extension_pool.register(Banner)
-extension_pool.register(HomeBanner)
+extension_pool.register(BannerGroup)
 extension_pool.register(Slider)

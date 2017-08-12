@@ -2,10 +2,10 @@
   <!-- start: follow-us -->
   <div  id="siguenos" class=" uk-container uk-container-center uk-margin-large-top uk-margin-large-bottom">
     <figure class="uk-overlay">
-      <img src="{% static "img/follow-us.jpg" %}" alt="">
+      <img src="{{ banner.img.url }}" alt="">
       <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-middle uk-flex-column uk-text-center">
           <div class="uk-width-1-1"> 
-            <h1 class="main-title uk-text-center"> {{ followus_title }} </h1>
+            <h1 class="main-title uk-text-center"> {{ banner.title }} </h1>
           </div>
           <div class="uk-width-1-1 uk-margin-large-top uk-margin-bottom">
             <form class="uk-form "> <!-- start: form container-->    
@@ -17,7 +17,7 @@
           </div>
           <div class="uk-container uk-container-center"> 
             <div class="uk-width-1-1 uk-margin-bottom">                      
-              <h2 class="uk-text-center"> {{ followus_text }}</h2>
+              <h2 class="uk-text-center"> {{ banner.content }}</h2>
             </div>
           </div>    
       </figcaption>

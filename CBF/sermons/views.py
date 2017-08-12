@@ -5,6 +5,7 @@ from sermons.models import Sermon
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
+
 class IndexSermonView(ListView):
     model = Sermon
     template_name = 'CBF/post-home.html'

@@ -10,8 +10,8 @@ class CommonElementInfo(TimeStampedModel):
     date_published = models.DateTimeField(verbose_name="Fecha de publicacion", auto_now_add=True)
     is_published = models.BooleanField(verbose_name="Publicado?", default=True)
     img = FilerImageField(blank=True, null=True,
-                                  verbose_name="Imagen del post",
-                                  help_text="Tamaño sugerido: 1024x765")
+                          verbose_name="Imagen del post",
+                          help_text="Tamaño sugerido: 1024x765")
     date_created = models.DateTimeField(verbose_name="Fecha de creacion")
 
 
@@ -43,7 +43,7 @@ class CommonLocationInfo(CommonElementInfo):
     name = models.CharField(verbose_name="Nombre", max_length=150)
     start_date = models.DateTimeField('Fecha de inicio', blank=True)
     end_date = models.DateTimeField('Fecha final', blank=True)
-    location = models.TextField(verbose_name='Ubicacion')
+    location = models.TextField(verbose_name='Ubicacion', blank=True)
     gmap_link = models.URLField(verbose_name='Link a Google Maps', blank=True, default='', help_text='Link externo de Googlemaps del evento')
 
     class Meta:

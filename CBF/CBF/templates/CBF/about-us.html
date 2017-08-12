@@ -14,15 +14,13 @@
   {% endwith %}
   {% endwith %}
 
-  {% with request.current_page.principlegroup.principles.all as principles  %}
+  {% with request.current_page.principlegroup.principle_set.all as principles  %}
 
     {% block principles %}
     {% include "CBF/components/principles.html" with principles=principles %}    
     {% endblock principles %}
 
   {% endwith %}
-
- 
 
     {% block main_leader_header %}
     {% include "CBF/components/leaders-header-text.html" %}    
@@ -31,7 +29,7 @@
     {% block main_leaders %}
     {% include "CBF/components/leaders.html" %}    
     {% endblock main_leaders %}
-     
+
     {% block leaders_header %}
     {% include "CBF/components/leaders-header-text.html" %}    
     {% endblock leaders_header %}

@@ -1,16 +1,17 @@
 {% load cms_tags static %}
       <!-- start: big-cards -->
       <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>
+        {% for element in elements %}
         <div class="uk-width-medium-1-2">
           <div class="uk-panel uk-panel-box">
             <div class="uk-panel-teaser">
               <figure class="uk-overlay uk-overlay-scale">
-                <img class="uk-overlay uk-overlay-scale" width="660" height="400" src="{% static "img/organized-church.jpg" %}" alt="">
+                <img class="uk-overlay uk-overlay-scale" width="660" height="400" src="{{ element.img.url }}" alt="">
                 <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-column
                 uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
                   <div class="uk-container">
-                    <h2 class='card-title'><a href='thought_detail.html'> Una iglesia organizada </a> </h2>  
-                    <div class="uk-panel-badge uk-badge"> Sermones </div>
+                    <h2 class='card-title'><a href='thought_detail.html'> {{ element.name }}  </a> </h2>  
+                    <div class="uk-panel-badge uk-badge"> Eventos </div>
                     <hr class="uk-grid-divider "></hr>
                   </div>                                             
                   <div class="uk-container">
@@ -23,52 +24,14 @@
                 </figcaption>
               </figure>
             </div>
-            <a class="uk-badge uk-badge-success card-tag"  href=""> Estudio familiar </a>  
-            <a class="uk-badge uk-badge-success card-tag"  href=""> Proverbios 5.15  </a> 
-            <h5 class='card-date'> 25/07/2017 </h6>
-            <h3 class="card-content"> En esta entrega, estuvimos reflexionando acerca de Malaquías y el tema eclesiástico </h3>
+            {% for tag in element.tags.all %}
+              <a class="uk-badge uk-badge-success card-tag"  href=""> {{ tag.name }}  </a> 
+            {% endfor %}
+            <h5 class='card-date'> {{ element.date_created|date:"d/m/Y" }}  </h6>
+            <h3 class="card-content"> {{ element.summary }} </h3>
             <div class="left"> 
-              <img class="profile-image" width="50px" height="50px" src="{% static "img/victor-medina.png" %}"> 
-              <h4 class="right preacher-title"> Victor Medina </h4>
+              <img class="profile-image" width="50px" height="50px" src="{{ element.img.url }}"> 
             </div>
           </div>
-        </div>   
-        <div class="uk-width-medium-1-2">
-          <div class="uk-panel uk-panel-box">
-            <div class="uk-panel-teaser">
-              <figure class="uk-overlay uk-overlay-scale">
-                <img class="uk-overlay uk-overlay-scale" width="660" height="400" src="{% static "img/escogidos.jpg" %}"
-                alt="">
-                <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-column
-                uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
-                  <div class="uk-container">
-                    <h2 class='card-title'><a href='thought_detail.html'> Escogidos para su gloria </a> </h2>  
-                    <div class="uk-panel-badge uk-badge"> Sermones </div>
-                    <hr class="uk-grid-divider "></hr>
-                  </div>                                             
-                  <div class="uk-container">
-                    <div class=" uk-flex uk-flex-center uk-flex-middle uk-flex-space-around uk-text-center">
-                      <a class="uk-icon-hover uk-icon-inbox right card-social-button"> </a> 
-                      <a class="uk-icon-hover uk-icon-twitter right card-social-button"> </a> 
-                      <a class="uk-icon-hover uk-icon-facebook right card-social-button"> </a> 
-                    </div>  
-                  </div>
-                  <div class="uk-container">
-                    <div class=" uk-flex uk-flex-order-last uk-flex-middle uk-flex-row uk-flex-space-around uk-text-center">
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-            <a class="uk-badge uk-badge-success card-tag"  href=""> Estudio familiar </a>  
-            <a class="uk-badge uk-badge-success card-tag"  href=""> Proverbios 5.15  </a> 
-            <h5 class='card-date'> 25/07/2017 </h6>
-            <h3 class="card-content"> Siempre hemos comentado acerca de la Libertad que Dios nos ha entregado fuera
-              del pecado. La siguiente pregunta es. ¿Para que estamos usando esta libertad? </h3>
-            <div class="left"> 
-              <img class="profile-image" width="50px" height="50px" src="{% static "img/victor-medina.png" %}"> 
-              <h4 class="right preacher-title"> Victor Medina </h4>
-            </div>
-          </div>
-        </div>   
-      </div> <!-- end: big cards-->
+        </div>  <!-- end: big cards-->
+        {% endfor %} 
