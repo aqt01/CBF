@@ -1,1 +1,1 @@
-web: gunicorn CBF.CBF.wsgi --log-file -
+web: gunicorn CBF.wsgi --log-file -
