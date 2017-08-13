@@ -11,6 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('cells', '0002_auto_20170808_0207'),
+        ('filer', '0007_auto_20161016_1055'),
     ]
 
     operations = [
