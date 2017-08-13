@@ -29,7 +29,7 @@ SECRET_KEY = '4g^)x(mx(mi^bk&@p+qmd=p2196nn3$i81821h3hp3(h(h(i+!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sheep-tracker-aqt01.c9users.io']
 
 
 # Application definition
