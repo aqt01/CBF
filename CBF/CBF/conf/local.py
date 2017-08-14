@@ -86,16 +86,16 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'django.template.context_processors.i18n',
-    'django.template.context_processors.debug',
-    'django.template.context_processors.request',
-    'django.template.context_processors.media',
-    'django.template.context_processors.csrf',
-    'django.template.context_processors.tz',
-    'sekizai.context_processors.sekizai',
-    'django.template.context_processors.static',
-    'cms.context_processors.cms_settings'
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'sekizai.context_processors.sekizai',
+                'django.template.context_processors.static',
+                'cms.context_processors.cms_settings'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -170,7 +170,7 @@ LANGUAGES = [
 ]
 
 CMS_LANGUAGES = {
-    ## Customize this
+    # Customize this
     1: [
         {
             'redirect_on_fallback': True,
