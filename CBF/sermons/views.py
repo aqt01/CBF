@@ -2,18 +2,38 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from sermons.models import Sermon
-from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class IndexSermonView(ListView):
     model = Sermon
     template_name = 'CBF/post-home.html'
+    context_object_name = 'sermons'
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super(IndexSermonView, self).get_context_data(**kwargs)
-        context['last_element'] = Sermon.objects.last()
-        context['elements'] = Sermon.objects.all().order_by('date_created')[0:6]
+        sermons = Sermon.objects.all()
+        context['paginator'] = Paginator(sermons, 6)
+        page = self.request.GET.get('page')
+
+        if (page is not None):
+            self.template_name = 'CBF/elements-list.html'
+
+            try:
+                context['elements'] = context['paginator'].page(page)
+
+            except PageNotAnInteger:
+                # If page is not an integer, deliver first page.
+                context['elements'] = context['paginator'].page(1)
+
+            except EmptyPage:
+                # If page is out of range (e.g. 9999), deliver last page of results.
+                context['elements'] = context['paginator'].page(context['paginator'].num_pages)
+
+        else:
+            context['last_element'] = Sermon.objects.first()
+            context['elements'] = Sermon.objects.all().order_by('date_created')[0:6]
 
         return context
 
