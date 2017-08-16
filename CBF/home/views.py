@@ -4,6 +4,11 @@ from sermons.models import Sermon
 from thoughts.models import Thought
 from events.models import Event
 
+from django.contrib.postgres.search import SearchQuery
+from django.shortcuts import render
+
+from CBF.utils import elements_text_search
+
 
 class IndexHomeView(TemplateView):
     template_name = 'CBF/home.html'
@@ -16,3 +21,12 @@ class IndexHomeView(TemplateView):
         context['thoughts'] = Thought.objects.all()[:3]
 
         return context
+
+
+class SearchResult(TemplateView):
+    template_name = 'CBF/elements-list.html'
+
+    def post(self, request, **kwargs):
+        print(request.POST)
+        elements= full_text_search(request.POST['search'])
+        return render(request, self.template_name, {'elements': elements})
