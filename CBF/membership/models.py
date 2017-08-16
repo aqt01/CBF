@@ -33,6 +33,9 @@ class Member(TimeStampedModel):
     def __str__(self):
         return str(self.name)
 
+    def get_role(self):
+        return str(self.ROLES[self.role][1])
+
 
 # TODO: Define what to connect with this model
 class SocialMedia(TimeStampedModel):

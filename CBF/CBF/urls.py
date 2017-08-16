@@ -9,6 +9,8 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
+from CBF.youtube_uploads import execute_import
+from CBF.conf.local import DATA_DIR
 
 admin.autodiscover()
 
@@ -21,13 +23,9 @@ urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^', include('cms.urls')),
 
-    #url(r'^sermons/', include('sermons.urls', namespace='sermons')),
-    url(r'^eventos/', include('events.urls', namespace='events')),
-    url(r'^reflexiones/', include('thoughts.urls', namespace='thoughts')),
-    #url(r'^libros/', include('books.urls', namespace='books')), TODO: Add books fetched by hashtag
-
-
 )
+
+#execute_import(DATA_DIR)
 
 # This is only needed when using runserver.
 if settings.DEBUG:
