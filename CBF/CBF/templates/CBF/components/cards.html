@@ -1,7 +1,5 @@
 {% load cms_tags static %}
-
-
-<div class="uk-container uk-container-center">
+      <div class="uk-container uk-container-center">
         <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>
           {% for element in elements %}
             <div class="uk-width-medium-1-3">
@@ -12,7 +10,7 @@
                     <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-column
                     uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
                       <div class="uk-container">
-                        <h2 class='card-title'><a href='thought_detail.html'> {{ element.name }} </a> </h2>  
+                        <h2 class='card-title'><a href='{{ element.slug }}'> {{ element.name }} </a> </h2>  
                         <div class="uk-panel-badge uk-badge"> Sermones </div>
                         <hr class="uk-grid-divider "></hr>
                       </div>                                             

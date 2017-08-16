@@ -1,0 +1,25 @@
+{% extends "CBF/base.html" %}
+
+{% load cms_tags sekizai_tags static compress menu_tags cache staticfiles %}
+
+{% block content %}
+ 
+  <!-- start: container -->
+  <div class="uk-container uk-container-center">
+   
+  {% block detail_component %}
+    {% include "CBF/components/detail-component.html" %}    
+  {% endblock detail_component %}
+
+  <div class="uk-container">
+    <h1 class="uk-text-left uk-margin-large-top section-title">  Temas relacionados </h1>
+  </div>
+
+  {% block cards %}
+    {% include "CBF/components/cards.html" %}    
+  {% endblock cards %}
+
+
+  </div> <!-- end: container -->
+  
+{% endblock content %}

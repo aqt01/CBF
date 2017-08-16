@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from sermons.models import Sermon
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from CBF.utils import elements_related_by_tags
 
 class IndexSermonView(ListView):
     model = Sermon
@@ -28,7 +29,6 @@ class IndexSermonView(ListView):
                 context['elements'] = context['paginator'].page(1)
 
             except EmptyPage:
-                # If page is out of range (e.g. 9999), deliver last page of results.
                 context['elements'] = context['paginator'].page(context['paginator'].num_pages)
 
         else:
@@ -40,8 +40,17 @@ class IndexSermonView(ListView):
 
 class SermonDetailView(DetailView):
     model = Sermon
+    template_name = 'CBF/element-detail.html'
+    slug_field = 'slug'
+    context_object_name = 'element'
 
     def get_context_data(self, **kwargs):
         context = super(SermonDetailView, self).get_context_data(**kwargs)
-        context['elements'] = Sermon.objects.all()
+        # We get the object on this detail view and search for related object by tags
+        obj = self.get_object()
+        tags = obj.get_tags()
+
+        context['elements'] = elements_related_by_tags(tags,Sermon)
+
+
         return context
