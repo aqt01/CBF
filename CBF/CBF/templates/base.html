@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>{% block title %}This is my new project home page{% endblock title %}</title>
+        <title>{% block title %} {% endblock title %}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <style type="text/css">
             .nav {
@@ -26,6 +26,8 @@
                 width: 20%;
             }
         </style>
+      
+        {% block meta %} {% endblock %}
 
         {% render_block "css" %}
         {% block css %} {% endblock %}

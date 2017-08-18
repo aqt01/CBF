@@ -1,0 +1,31 @@
+{% load static staticfiles %}
+<!-- start:modals -->
+  <section>
+    <div id="search-modal" class="uk-modal">
+      <div class="uk-modal-dialog uk-modal-dialog-blank uk-height-viewport">
+        <div class="uk-flex uk-flex-column uk-flex-center uk-flex-end uk-flex-middle uk-flex-order-last">
+          <img src="{% static "img/logo-no-text.png" %}"  height="240px" width="300px" alt="logo"/>
+          <div> 
+            <form class="uk-form uk-margin-top uk-margin-bottom" action="/en/busqueda/" method="post">
+              {% csrf_token %}
+              <input type="text" name="search" placeholder="Buscar">
+              <a id="nav-search-icon" class="uk-icon-button uk-icon-small uk-icon-search uk-text-center uk-text-bottom" href="#search-modal" data-uk-modal> </a>
+            </form> 
+          </div>
+          <div>
+            <h4 class="uk-text-center uk-margin-top"> Temas populares </h4>
+            <!-- start: popular tags -->
+            <div class="popular-tag-container">
+              <div class="uk-margin-top uk-margin-bottom uk-flex uk-flex-start uk-flex-space-around ">
+                <a class="uk-badge uk-badge-success"  href=""> Proverbios 5.15  </a> 
+                <a class="uk-badge uk-badge-success"  href=""> Estudio Familiar  </a> 
+                <a class="uk-badge uk-badge-success"  href=""> Malaquias 2.5  </a> 
+                <a class="uk-badge uk-badge-success"  href=""> Fe  </a> 
+              </div>   <!-- end: popular tags -->
+           </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </section> <!-- end:modals -->
+

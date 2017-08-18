@@ -5,37 +5,31 @@
 {% block content %}
 
   {% with request.current_page.bannerextension.title as title  %}
-  {% with request.current_page.bannerextension.content as content  %}
-
-    {% block banner %}
-    {% include "CBF/components/banner.html" with content=content title=title %}    
-    {% endblock banner %}
-   
-  {% endwith %}
+    {% with request.current_page.bannerextension.content as content  %}
+      {% block banner %}
+        {% include "CBF/components/banner.html" with content=content title=title %}    
+      {% endblock banner %}
+    {% endwith %}
   {% endwith %}
 
   {% with request.current_page.principlegroup.principle_set.all as principles  %}
-
     {% block principles %}
-    {% include "CBF/components/principles.html" with principles=principles %}    
+      {% include "CBF/components/principles.html" with principles=principles %}    
     {% endblock principles %}
-
   {% endwith %}
 
-    {% block main_leader_header %}
-    {% include "CBF/components/leaders-header-text.html" %}    
-    {% endblock main_leader_header %}
- 
-    {% block main_leaders %}
-    {% include "CBF/components/leaders.html" %}    
-    {% endblock main_leaders %}
+    {% placeholder "Titulo de lideres principales" %}
 
-    {% block leaders_header %}
-    {% include "CBF/components/leaders-header-text.html" %}    
-    {% endblock leaders_header %}
-   
+    {% with main_leaders as leaders %}
+      {% block main_leaders %}
+        {% include "CBF/components/leaders.html" with leaders=leaders %}    
+      {% endblock main_leaders %}
+    {% endwith %}
+
+    {% placeholder "Titulos de lideres" %}
+  
     {% block leaders %}
-    {% include "CBF/components/leaders.html" %}    
+    {% include "CBF/components/leaders.html" with leaders=leaders %}
     {% endblock leaders %}
  
 

@@ -8,10 +8,15 @@
             <h1 class="main-title uk-text-center"> {{ banner.title }} </h1>
           </div>
           <div class="uk-width-1-1 uk-margin-large-top uk-margin-bottom">
-            <form class="uk-form "> <!-- start: form container-->    
-              <fieldset data-uk-margin>            
-                <input type="text" placeholder="Correo Electrónico" class="uk-width-1-2">
-                <button class="uk-button uk-width-1-2"> Suscribirse </button>
+            <form method="post" action="{% url 'home:home' %}" class="uk-form"> <!-- start: form container-->    
+              <fieldset data-uk-margin>
+                {% csrf_token %}
+                {{ form.email.errors }}
+                <input id="{{ form.email.id_for_label }}" type="email" name="{{ form.email.name }}" placeholder="Correo Electrónico" class="uk-width-1-2">
+                {% if form.email.help_text %}
+                  <p class="help">{{ form.email.help_text|safe }}</p>
+                {% endif %}
+                <button type="submit" value="Suscribirse" class="uk-button uk-width-1-2"  data-uk-modal> Suscribirse </button>
               </fieldset>
             </form> <!-- end: mail form -->                 
           </div>

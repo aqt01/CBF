@@ -1,5 +1,21 @@
 {% block detail_component %}
 
+
+{% block title%} {{ element.name }}  {% endblock title %}
+
+{% block meta %}
+
+<meta property="og:url"
+      content="{{ request.path }}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{ element.name }}" />
+<meta property="og:description"        content="{{ element.content }}" />
+<meta property="og:image"
+      content="{{ element.img.url}}"/>
+
+{% endblock meta %}
+
+
   <div class="uk-margin-large-bottom uk-margin-large-top">
    <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>  
       <div class="uk-width-medium-1-1">

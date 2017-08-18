@@ -5,11 +5,9 @@
 {% block content %}
  
 {% with request.current_page.slider.sliderimage_set.all as slides  %}
-
   {% block slideshow %}
     {% include "CBF/components/slideshow.html" with slides=slides %}    
   {% endblock slideshow  %}
-
 {% endwith %}
 
 
@@ -66,14 +64,10 @@
 
   </div> <!-- end: container -->
   
-  
   {% with request.current_page.bannergroup.banner_set.all.2 as banner  %}
-  
     {% block follow-us %}
       {% include "CBF/components/follow-us.html" with banner=banner %}    
     {% endblock follow-us %}
-
   {% endwith %}
-
 
 {% endblock content %}

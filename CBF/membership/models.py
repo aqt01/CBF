@@ -21,6 +21,8 @@ class Member(TimeStampedModel):
     telephone = models.CharField(verbose_name='Numero de telefono', max_length=12, blank=True)
     cellphone = models.CharField(verbose_name='Numero de celular', max_length=12, blank=True)
     role = models.IntegerField(verbose_name='Rol', default=5, choices=ROLES, blank=True)
+    role_description = models.CharField(verbose_name="Descripcion del rol", max_length=150, blank=True)
+
     profile_img = FilerImageField(blank=True, null=True,
                                      verbose_name="Imagen de perfil",
                                      help_text="Tamaño sugerido: 50x50")

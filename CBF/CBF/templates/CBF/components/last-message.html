@@ -3,7 +3,9 @@
       <div class="uk-grid uk-grid-match uk-grid-collapse uk-margin-large-bottom uk-margin-large-top"
         data-uk-grid-match="{target:'.latest-panel'}">
         <div class="uk-width-medium-3-5 uk-margin-large-bottom ">
-          <img width="100%" height="%25" src="{{ last_element.img.url }}" alt="">
+          <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column">
+            <img width="100%"  src="{{ last_element.img.url }}" alt="">
+          </div>
         </div>
         <div class="uk-width-medium-2-5 latest-panel">
 				  <div class="uk-panel uk-panel-box">
@@ -14,18 +16,15 @@
             {% endfor %}
             <h3 class="latest-card-content"> {{ last_element.summary }}  </h3>
             <div class="uk-margin-large-top"> </div>
-            <div class="uk-flex uk-flex-middle uk-flex-order-first uk-flex-row">
-              {% if last_element.location != None %}
-                <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
-                <h5 class="location-info"> {{ last_element.location }} </h5>
-              {% else %}
-                <img class="profile-image" width="50px" height="50px" src ="{% static "img/victor-medina.png" %}">
-
-                <h5 class="detail-preacher-title"> {{ last_element.author.name }} </h5>
-              {% endif  %}
-
-
-            </div>
+              <div class="uk-flex uk-flex-middle uk-flex-order-first uk-flex-row">
+                {% if last_element.location != None %}
+                  <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
+                  <h5 class="location-info"> {{ last_element.location }} </h5>
+                {% else %}
+                  <img class="profile-image" width="50px" height="50px" src ="{% static "img/victor-medina.png" %}">
+                  <h5 class="detail-preacher-title"> {{ last_element.author.name }} </h5>
+                {% endif  %}
+              </div>
             <div class="uk-margin-top uk-margin-bottom"> </div>
             <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-row">
               {% for social_media in last_element.author.socialmedia_set.all %}
