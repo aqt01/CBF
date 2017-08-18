@@ -7,8 +7,8 @@ from django.views.generic.edit import FormView
 from sermons.models import Sermon
 from thoughts.models import Thought
 from events.models import Event
-from suscribers.models import Suscriber
-from suscribers.forms import SuscriberForm
+from subscribers.models import Subscriber
+from subscribers.forms import SubscriberForm
 
 
 class ThanksView(TemplateView):
@@ -20,7 +20,7 @@ class ThanksView(TemplateView):
 
 
 class IndexHomeView(FormView):
-    form_class = SuscriberForm
+    form_class = SubscriberForm
     template_name = 'CBF/home.html'
     success_url = '/gracias'
 
@@ -33,7 +33,7 @@ class IndexHomeView(FormView):
         return context
 
     def form_valid(self, form):
-        suscriber = Suscriber.objects.create(email=form.cleaned_data['email'])
+        subscriber = Subscriber.objects.create(email=form.cleaned_data['email'])
         return super(IndexHomeView, self).form_valid(form)
 
 

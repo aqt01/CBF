@@ -22,7 +22,7 @@ class BannerGroupToolbar(ExtensionToolbar):
             page_extension, url = self.get_page_extension_admin()
             if url:
                 # adds a toolbar item in position 0 (at the top of the menu)
-                current_page_menu.add_modal_item(_('Banners en inicio'), url=url,
+                current_page_menu.add_modal_item(_('Banners'), url=url,
                                                  disabled=not self.toolbar.edit_mode, position=0)
 
 # The the slider attached to the first page created
