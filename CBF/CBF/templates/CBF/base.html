@@ -1,35 +1,36 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags static compress menu_tags cache %}
+{% load cms_tags sekizai_tags compress menu_tags cache %}
+{% load static from staticfiles %}
 
     {% block css %} 
     <meta charset="UTF-8">
     <!-- Style css -->
-    <link rel="stylesheet" type="text/css" href="{% static "css/uikit.min.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/uikit.css" %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.css' %}"> 
     <!-- start:slideshow -->
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.gradient.css" }%"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.gradient.min.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.almost-flat.css" %}">     
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.almost-flat.min.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.min.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/slideshow.css" %}"> <!-- end:slideshow -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/slideshow.gradient.css' }%"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/slideshow.gradient.min.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/slideshow.almost-flat.css' %}">     
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/slideshow.almost-flat.min.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/slideshow.min.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/slideshow.css' %}"> <!-- end:slideshow -->
     <!-- start:Font awesome -->
-    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/css/font-awesome.min.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/css/font-awesome.css" }%"> 
-    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/FontAwesome.otf" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.svg" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.woff" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" %}"> <!-- end:Font awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.css' }%"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/fonts/FontAwesome.otf' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/fonts/fontawesome-webfont.svg' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/fonts/fontawesome-webfont.woff' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/fonts/fontawesome-webfont.ttf' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/fonts/fontawesome-webfont.woff2' %}"> <!-- end:Font awesome -->
     <!-- start: font -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> <!-- end: font -->
     <!-- start: sticky -->
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.almost-flat.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.gradient.css"  %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.gradient.min.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/components/sticky.min.css"  %}"> <!-- end:sticky -->
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">   
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/sticky.almost-flat.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/sticky.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/sticky.gradient.css'  %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/sticky.gradient.min.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/components/sticky.min.css' %}"> <!-- end:sticky -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">   
     {% endblock %}
 
     {% block jquery %}
@@ -37,23 +38,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script> <!-- end:jquery -->
     <!-- start: all javascript uikit specific -->
-    <script src="{% static "js/uikit.min.js" %}"> </script>
-    <script src="{% static "js/uikit.js" %}"> </script>
-    <script src="{% static "js/components/slideshow.min.js" %}"> </script>
-    <script src="{% static "js/components/slideshow.js"  %}"> </script>
-    <script src="{% static "js/components/slideshow-fx.js" %}"> </script>
-    <script src="{% static "js/components/slideshow-fx.min.js" %}"> </script>
-    <script src="{% static "js/components/sticky.js" %}"> </script>
-    <script src="{% static "js/components/sticky.min.js" %}"> </script> <!-- end: all javascript uikit specific -->
+    <script src="{% static 'js/uikit.min.js' %}"> </script>
+    <script src="{% static 'js/uikit.js' %}"> </script>
+    <script src="{% static 'js/components/slideshow.min.js' %}"> </script>
+    <script src="{% static 'js/components/slideshow.js'  %}"> </script>
+    <script src="{% static 'js/components/slideshow-fx.js' %}"> </script>
+    <script src="{% static 'js/components/slideshow-fx.min.js' %}"> </script>
+    <script src="{% static 'js/components/sticky.js' %}"> </script>
+    <script src="{% static 'js/components/sticky.min.js' %}"> </script> <!-- end: all javascript uikit specific -->
     <!-- start:slider -->
-    <script src="{% static "js/components/slider.js" %}"> </script>
-    <script src="{% static "js/components/slider.min.js" %}"> </script>
+    <script src="{% static 'js/components/slider.js' %}"> </script>
+    <script src="{% static 'js/components/slider.min.js' %}"> </script>
     <!-- start: parallax-->
-    <script src="{% static "js/components/parallax.js" %}"> </script>
-    <script src="{% static "js/components/parallax.min.js" %}"> </script>
+    <script src="{% static 'js/components/parallax.js' %}"> </script>
+    <script src="{% static 'js/components/parallax.min.js' %}"> </script>
  
-    <script src="{% static "js/jquery.min.js" %}"> </script> <!-- end:slider -->
-    <script src="{% static "js/menu.js" %}"> </script> 
+    <script src="{% static 'js/jquery.min.js' %}"> </script> <!-- end:slider -->
+    <script src="{% static 'js/menu.js' %}"> </script> 
     {% endblock %}
     
     {% block menu %}
@@ -109,7 +110,7 @@
 
     <section class="uk-container uk-margin-large-bottom uk-margin-large-left uk-margin-large-right">
       <div class="uk-flex uk-flex-space-between">
-        <a href="/"><img src="{% static "img/logo-no-text.png" %}"  height="80px" width="100px" alt="logo"/></a>
+        <a href="/"><img src="{% static 'img/logo-no-text.png' %}"  height="80px" width="100px" alt="logo"/></a>
         <h5>© 2017 -  Comunidad Biblica De Fe</h5>
       </div>
     </section>
