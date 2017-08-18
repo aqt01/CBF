@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from CBF.utils import elements_related_by_tags
 
+
 class IndexSermonView(ListView):
     model = Sermon
     template_name = 'CBF/post-home.html'
@@ -49,8 +50,7 @@ class SermonDetailView(DetailView):
         # We get the object on this detail view and search for related object by tags
         obj = self.get_object()
         tags = obj.get_tags()
-
-        context['elements'] = elements_related_by_tags(tags,Sermon)
+        context['elements'] = elements_related_by_tags(tags, Sermon)
 
 
         return context
