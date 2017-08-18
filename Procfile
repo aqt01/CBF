@@ -1,2 +1,2 @@
-release: python CBF/manage.py migrate --settings CBF.conf.production
+release: ./release-tasks.sh 
 web: gunicorn --pythonpath "$PWD/CBF" --capture-output CBF.wsgi:application --log-file -
