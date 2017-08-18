@@ -21,10 +21,9 @@ def elements_text_search(search_text):
 
     return elements
 
-def elements_related_by_tags(tags,element):
+def elements_related_by_tags(tags, element):
     number_elements_related = 0
     elements_related = set()
-
 
     for tag in tags:
         number_elements_related += tag.get_count_related_objects()
@@ -45,8 +44,6 @@ def elements_related_by_tags(tags,element):
                 for event in tag.event_set.all():
                     elements_related.add(event)
     return elements_related
-
-
 
 def syncronize_with_youtube(title, video_id, description):
     elements = title.split(' | ')
