@@ -1,4 +1,4 @@
-from django.conf import settings
+from django.conf import production as settings
 from storages.backends.s3boto import S3BotoStorage
 
 
