@@ -1,5 +1,5 @@
 from CBF.youtube_uploads import execute_import
-from CBF.conf.local import DATA_DIR
+from CBF.settings.local import DATA_DIR
 from django.core.management.base import BaseCommand
 
 

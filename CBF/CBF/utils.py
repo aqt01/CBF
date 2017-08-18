@@ -1,7 +1,7 @@
 from membership.models import Member
 from sermons.models import Sermon
 import datetime
-from CBF.conf.local import TIME_ZONE
+from CBF.settings.local import TIME_ZONE
 
 from sermons.models import Sermon
 from events.models import Event

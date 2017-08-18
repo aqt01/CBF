@@ -2,7 +2,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from cms.sitemaps import CMSSitemap
-from django.conf import settings
+from CBF.settings import local
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
@@ -24,8 +24,8 @@ urlpatterns += i18n_patterns(
 )
 
 # This is only needed when using runserver.
-if settings.DEBUG:
+if local.DEBUG:
     urlpatterns = [
         url(r'^media/(?P<path>.*)$', serve,
-            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+            {'document_root': local.MEDIA_ROOT, 'show_indexes': True}),
         ] + staticfiles_urlpatterns() + urlpatterns

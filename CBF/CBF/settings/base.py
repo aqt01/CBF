@@ -68,6 +68,25 @@ STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 SITE_ID = 1
 
 
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.normpath(os.path.join(BASE_DIR, 'static')),
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
+
+)
+
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -194,7 +213,8 @@ CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
 
-DATABASES = dict(default=dj_database_url.config(default=os.environ.get('DATABASE_URL')))
+DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 MIGRATION_MODULES = {
 

@@ -1,4 +1,4 @@
-from CBF.conf import production as settings
+from CBF.settings import production as settings
 from storages.backends.s3boto import S3BotoStorage
 
 
