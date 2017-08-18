@@ -152,7 +152,7 @@ INSTALLED_APPS = (
     'widgets',
     'home',
     'about_us',
-    'suscribers',
+    'subscribers',
     'anymail',
     'fontawesome',
     'compressor',
