@@ -151,6 +151,9 @@ INSTALLED_APPS = (
     'books',
     'widgets',
     'home',
+    'about_us',
+    'suscribers',
+    'anymail',
     'fontawesome',
     'compressor',
     'django_extensions'
@@ -161,6 +164,7 @@ LANGUAGES = [
     ('en', _('English')),
 
 ]
+
 
 CMS_LANGUAGES = {
     # Customize this
@@ -186,24 +190,13 @@ CMS_TEMPLATES = [
     ('CBF/post-home.html', 'General posts'),
     ('CBF/cell.html', 'Cell'),
     ('CBF/about-us.html', 'About-us'),
+    ('CBF/thanks.html', 'Gracias'),
 
 ]
 
 CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
-
-DATABASES = {
-    'default': {
-        'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.sqlite3',
-        'HOST': 'localhost',
-        'NAME': 'project.db',
-        'PASSWORD': '',
-        'PORT': '',
-        'USER': ''
-    }
-}
 
 DATABASES = dict(default=dj_database_url.config(default=os.environ.get('DATABASE_URL')))
 
@@ -218,10 +211,24 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+
 # CELERY STUFF
-CELERY_BROKER_URL = 'amqp://CBF:CristoCentro@localhost:5672/CBF'
-CELERY_RESULT_BACKEND = 'amqp://CBF:CristoCentro@localhost:5672/CBF'
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_BROKER_RESULT')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Santo_Domingo'
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": os.environ.get('MAILGUN_ACTIVATE_KEY'),
+    "MAILGUN_SENDER_DOMAIN": os.environ.get('MAILGUN_SENDER_DOMAIN'),
+}
+
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+DEFAULT_FROM_EMAIL = "postmaster@" + os.environ.get('MAILGUN_SENDER_DOMAIN')
+
+MAILGUN_ACCESS_KEY = os.environ.get('MAILGUN_ACTIVATE_KEY')
+MAILGUN_SERVER_NAME = os.environ.get('MAILGUN_SENDER_DOMAIN')
