@@ -2,10 +2,12 @@ import os
 from django.utils.translation import ugettext_lazy as _
 import dj_database_url
 
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 gettext = lambda s: s
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR)
+
 """
 Django settings for CBF project.
 
@@ -26,7 +28,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -206,8 +207,7 @@ CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+DATABASES = dict(default=dj_database_url.config(default=os.environ.get('DATABASE_URL')))
 
 MIGRATION_MODULES = {
 

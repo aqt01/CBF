@@ -13,7 +13,7 @@ INSTALLED_APPS += (
     'storages',
 )
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+DATABASES = dict(default=dj_database_url.config(default=os.environ.get('DATABASE_URL')))
 
 # S3 AWS SETTINGS
 AWS_STORAGE_BUCKET_NAME = 'comunidadbf'
