@@ -4,7 +4,9 @@
 <!doctype html>
 <html>
     <head>
-        <title>{% block title %} {% endblock title %}</title>
+        {% block title %} {% endblock title %}
+        {% block meta %} {% endblock meta %}
+
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <style type="text/css">
             .nav {
@@ -29,7 +31,6 @@
             }
         </style>
       
-        {% block meta %} {% endblock %}
 
         {% render_block "css" %}
         {% block css %} {% endblock %}

@@ -28,6 +28,9 @@ class BannerGroup(PageExtension):
 class Banner(CommonWidgetInfo):
     banners = models.ForeignKey(BannerGroup, blank=True)
 
+    class Meta:
+        ordering = ['-created']
+
     def __str__(self):
         return self.title
 

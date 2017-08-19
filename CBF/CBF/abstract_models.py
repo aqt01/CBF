@@ -33,7 +33,6 @@ class CommonWidgetInfo(TimeStampedModel):
         abstract = True
 
 
-
 class CommonPostInfo(CommonElementInfo):
     content = models.TextField(verbose_name="Contenido", max_length=1200, blank=True)
 

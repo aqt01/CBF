@@ -1,21 +1,16 @@
 {% block detail_component %}
 
-
-{% block title%} {{ element.name }}  {% endblock title %}
+{% block title %}  <title> {{ element.name }} - {{ element.author.name }} </title>  {% endblock title %}
 
 {% block meta %}
 
-<meta property="og:url"
-      content="{{ request.path }}" />
-<meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ element.name }}" />
-<meta property="og:description"        content="{{ element.content }}" />
-<meta property="og:image"
-      content="{{ element.img.url}}"/>
+  <meta property="og:url"         content="{{ request.path }}" />
+  <meta property="og:type"        content="article" />
+  <meta property="og:title"       content="{{ element.name }}" />
+  <meta property="og:description" content="{{ element.content }}" />
+  <meta property="og:image"       content="{{ element.img.url }}"/>
 
 {% endblock meta %}
-
-
   <div class="uk-margin-large-bottom uk-margin-large-top">
    <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>  
       <div class="uk-width-medium-1-1">
@@ -23,7 +18,7 @@
           <div class="uk-panel-teaser">
             <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
           </div>
-          <div class="uk-panel-badge uk-badge"> Reflexiones </div>
+          <div class="uk-panel-badge uk-badge"> {{ element_name }} </div>
             <div class="uk-margin-large-top uk-margin-large-bottom "></div>
             <h1 class='detail-title'> {{ element.name }} </h1> 
               <div>
@@ -46,9 +41,7 @@
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-twitter  " > </a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-inbox ">     </a> 
               </div>
-
             </div>
-
             <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-row">
             </div>
           </div>

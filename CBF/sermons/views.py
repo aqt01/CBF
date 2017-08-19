@@ -51,6 +51,5 @@ class SermonDetailView(DetailView):
         obj = self.get_object()
         tags = obj.get_tags()
         context['elements'] = elements_related_by_tags(tags, Sermon)
-
-
+        context['element_name'] = self.object._meta.verbose_name_plural
         return context
