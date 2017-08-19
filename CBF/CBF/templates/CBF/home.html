@@ -15,52 +15,48 @@
   <div class="uk-container uk-container-center">
 
     {% with last_event as element %}
-
-      {% block last_message %}
-        {% include "CBF/components/last-message.html" with element=element %}    
-      {% endblock last_message  %}
-
+      {% with last_element_name as element_name %}
+        {% block last_message %}
+          {% include "CBF/components/last-message.html" with element=element element_name=element_name %}
+        {% endblock last_message  %}
+      {% endwith %}
     {% endwith %}
 
     {% with events as elements  %}
-
-      {% block big-cards %}
-        {% include "CBF/components/big-cards.html" with elements=elements %}
-      {% endblock big-cards  %}
-    
+      {% with event_element_name as element_name %}
+        {% block big-cards %}
+          {% include "CBF/components/big-cards.html" with elements=elements element_name=element_name %}
+        {% endblock big-cards  %}
+      {% endwith %}
     {% endwith %}
 
     {% with request.current_page.bannergroup.banner_set.all.0 as banner  %}
-
       {% block sermon_banner %}
         {% include "CBF/components/banner.html" with banner=banner %}    
       {% endblock sermon_banner %}
-      
     {% endwith %}
-    
-    {% with sermons as elements  %}
 
-      {% block sermon_cards %}
-        {% include "CBF/components/cards.html" with elements=elements %}    
-      {% endblock sermon_cards %}
-    
+    {% with sermons as elements  %}
+      {% with sermon_element_name as element_name %}
+        {% block sermon_cards %}
+          {% include "CBF/components/cards.html" with elements=elements element_name=element_name %} 
+        {% endblock sermon_cards %}
+      {% endwith %}
     {% endwith %}
 
 
     {% with request.current_page.bannergroup.banner_set.all.1 as banner  %}
-
       {% block thought_banner %}
         {% include "CBF/components/banner.html" with banner=banner %}    
       {% endblock thought_banner %}
-
     {% endwith %}  
 
     {% with thoughts as elements  %}
-
-      {% block thought_cards %}
-        {% include "CBF/components/cards.html" with elements=elements %}    
-      {% endblock thought_cards %}
-    
+      {% with thought_element_name as element_name %}
+        {% block thought_cards %}
+          {% include "CBF/components/cards.html" with elements=elements  element_name=element_name %}    
+        {% endblock thought_cards %}
+      {% endwith %}  
     {% endwith %}  
 
   </div> <!-- end: container -->

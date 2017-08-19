@@ -27,9 +27,16 @@ class IndexHomeView(FormView):
     def get_context_data(self, **kwargs):
         context = super(IndexHomeView, self).get_context_data(**kwargs)
         context['last_element'] = Event.objects.last()
+        context['last_element_name'] = context['last_element']._meta.verbose_name_plural
         context['events'] = Event.objects.all()[1:3]
+        context['event_element_name'] = context['events'][0]._meta.verbose_name_plural
+
         context['sermons'] = Sermon.objects.all()[:3]
+        context['sermon_element_name'] = context['sermons'][0]._meta.verbose_name_plural
+
         context['thoughts'] = Thought.objects.all()[:3]
+        context['thought_element_name'] = context['thoughts'][0]._meta.verbose_name_plural
+
         return context
 
     def form_valid(self, form):

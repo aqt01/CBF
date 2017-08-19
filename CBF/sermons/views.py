@@ -16,6 +16,7 @@ class IndexSermonView(ListView):
     def get_context_data(self, **kwargs):
         context = super(IndexSermonView, self).get_context_data(**kwargs)
         sermons = Sermon.objects.all()
+        context['element_name'] = sermons[0]._meta.verbose_name_plural
         context['paginator'] = Paginator(sermons, 6)
         page = self.request.GET.get('page')
 
