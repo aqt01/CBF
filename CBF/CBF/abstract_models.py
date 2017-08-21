@@ -16,6 +16,8 @@ class CommonElementInfo(TimeStampedModel):
                           help_text="Tamaño sugerido: 1024x765")
     date_created = models.DateTimeField(verbose_name="Fecha de creacion")
 
+    def get_tags(self):
+        return (self.tags.all())
 
     class Meta:
         abstract = True
@@ -28,13 +30,15 @@ class CommonWidgetInfo(TimeStampedModel):
                           verbose_name="Imagen",
                           help_text="Tamaño sugerido: 1024x764")
 
-
     class Meta:
         abstract = True
 
 
 class CommonPostInfo(CommonElementInfo):
     content = models.TextField(verbose_name="Contenido", max_length=1200, blank=True)
+
+    def get_tags(self):
+        return (self.tags.all())
 
     class Meta:
         abstract = True

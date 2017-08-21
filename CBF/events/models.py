@@ -13,5 +13,3 @@ class Event(CommonLocationInfo):
         ordering = ['-start_date']
         verbose_name = "Evento"
         verbose_name_plural = "Eventos"
-
-

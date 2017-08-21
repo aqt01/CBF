@@ -3,17 +3,16 @@ from django.views.generic.list import ListView
 from thoughts.models import Thought
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from CBF.utils import elements_related_by_tags
 
-class IndexThoughtView(ListView):
-    model = Thought
-    template_name = 'CBF/post-home.html'
-    context_object_name = 'thoughts'
-    paginate_by = 6
+
+class IndexThoughtViewMixin(object):
 
     def get_context_data(self, **kwargs):
-        context = super(IndexThoughtView, self).get_context_data(**kwargs)
-        thoughts = Thought.objects.all()
-        context['paginator'] = Paginator(thoughts, 6)
+        context = super(IndexThoughtViewMixin, self).get_context_data(**kwargs)
+        sermons = Thought.objects.all()
+        context['element_name'] = sermons[0]._meta.verbose_name_plural
+        context['paginator'] = Paginator(sermons, 6)
         page = self.request.GET.get('page')
 
         if (page is not None):
@@ -27,7 +26,6 @@ class IndexThoughtView(ListView):
                 context['elements'] = context['paginator'].page(1)
 
             except EmptyPage:
-                # If page is out of range (e.g. 9999), deliver last page of results.
                 context['elements'] = context['paginator'].page(context['paginator'].num_pages)
 
         else:
@@ -37,11 +35,24 @@ class IndexThoughtView(ListView):
         return context
 
 
+class IndexThoughtView(IndexThoughtViewMixin, ListView):
+    model = Thought
+    template_name = 'CBF/post-home.html'
+    context_object_name = 'thoughts'
+    paginate_by = 6
+
 
 class ThoughtDetailView(DetailView):
     model = Thought
+    template_name = 'CBF/element-detail.html'
+    slug_field = 'slug'
+    context_object_name = 'element'
 
     def get_context_data(self, **kwargs):
         context = super(ThoughtDetailView, self).get_context_data(**kwargs)
-        context['other_elements'] = Thought.objects.all()
+        # We get the object on this detail view and search for related object by tags
+        obj = self.get_object()
+        tags = obj.get_tags()
+        context['elements'] = elements_related_by_tags(tags, Thought)
+        context['element_name'] = self.object._meta.verbose_name_plural
         return context

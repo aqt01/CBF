@@ -3,16 +3,15 @@ from django.views.generic.list import ListView
 from events.models import Event
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from CBF.utils import elements_related_by_tags
 
-class IndexEventView(ListView):
-    model = Event
-    template_name = 'CBF/post-home.html'
-    context_object_name = 'events'
-    paginate_by = 6
+
+class IndexEventMixin(object):
 
     def get_context_data(self, **kwargs):
-        context = super(IndexEventView, self).get_context_data(**kwargs)
+        context = super(IndexEventMixin, self).get_context_data(**kwargs)
         events = Event.objects.all()
+        context['element_name'] = events[0]._meta.verbose_name_plural
         context['paginator'] = Paginator(events, 6)
         page = self.request.GET.get('page')
 
@@ -37,10 +36,24 @@ class IndexEventView(ListView):
         return context
 
 
+class IndexEventView(IndexEventMixin, ListView):
+    model = Event
+    template_name = 'CBF/post-home.html'
+    context_object_name = 'events'
+    paginate_by = 6
+
+
 class EventDetailView(DetailView):
     model = Event
+    template_name = 'CBF/element-detail.html'
+    slug_field = 'slug'
+    context_object_name = 'element'
 
     def get_context_data(self, **kwargs):
         context = super(EventDetailView, self).get_context_data(**kwargs)
-        context['elements'] = Event.objects.all()
+        # We get the object on this detail view and search for related object by tags
+        obj = self.get_object()
+        tags = obj.get_tags()
+        context['elements'] = elements_related_by_tags(tags, Event)
+        context['element_name'] = self.object._meta.verbose_name_plural
         return context

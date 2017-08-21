@@ -36,9 +36,6 @@ class Sermon(CommonPostInfo):
     def __str__(self):
         return self.name
 
-    def get_tags(self):
-        return (self.tags.all())
-
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Sermon, self).save(*args, **kwargs)

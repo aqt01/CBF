@@ -7,14 +7,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from CBF.utils import elements_related_by_tags
 
 
-class IndexSermonView(ListView):
-    model = Sermon
-    template_name = 'CBF/post-home.html'
-    context_object_name = 'sermons'
-    paginate_by = 6
+class IndexSermonViewMixin(object):
 
     def get_context_data(self, **kwargs):
-        context = super(IndexSermonView, self).get_context_data(**kwargs)
+        context = super(IndexSermonViewMixin, self).get_context_data(**kwargs)
         sermons = Sermon.objects.all()
         context['element_name'] = sermons[0]._meta.verbose_name_plural
         context['paginator'] = Paginator(sermons, 6)
@@ -38,6 +34,13 @@ class IndexSermonView(ListView):
             context['elements'] = Sermon.objects.all().order_by('date_created')[0:6]
 
         return context
+
+
+class IndexSermonView(IndexSermonViewMixin, ListView):
+    model = Sermon
+    template_name = 'CBF/post-home.html'
+    context_object_name = 'sermons'
+    paginate_by = 6
 
 
 class SermonDetailView(DetailView):
