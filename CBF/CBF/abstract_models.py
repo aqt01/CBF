@@ -45,7 +45,6 @@ class CommonPostInfo(CommonElementInfo):
 
 
 class CommonLocationInfo(CommonElementInfo):
-    name = models.CharField(verbose_name="Nombre", max_length=150)
     start_date = models.DateTimeField('Fecha de inicio', blank=True)
     end_date = models.DateTimeField('Fecha final', blank=True)
     location = models.TextField(verbose_name='Ubicacion', blank=True)

@@ -11,6 +11,7 @@ class MemberAdmin(admin.ModelAdmin):
     inlines = [
         SocialMediaInLine,
     ]
+    list_display = ['name', 'email', 'role_description']
 
 
 admin.site.register(Member, MemberAdmin)
