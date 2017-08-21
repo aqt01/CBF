@@ -6,10 +6,11 @@
  
   <!-- start: container -->
   <div class="uk-container uk-container-center">
-   
-  {% block last_message %}
-    {% include "CBF/components/last-message.html" %}    
-  {% endblock last_message  %}
+  {% with element_name as last_element_name %}
+    {% block last_message %}
+      {% include "CBF/components/last-message.html" with last_element_name=last_element_name %}    
+    {% endblock last_message  %}
+  {% endwith %}
 
   {% block cards %}
     {% include "CBF/components/cards.html" %}    

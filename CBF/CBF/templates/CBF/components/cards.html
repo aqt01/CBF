@@ -40,9 +40,14 @@
                 {% endfor %}
                 <h5 class='card-date'> {{ element.date_created|date:"d/m/Y" }} </h6>
                 <h3 class="card-content"> {{ element.summary }} </h3>
-                <div class="left"> 
-                  <img class="profile-image" width="50px" height="50px" src="{{ element.author.profile_img.url }}"> 
-                  <h4 class="right preacher-title"> {{ element.author.name }} </h4>
+                <div class="left">
+                {% if element.location != None %}
+                  <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
+                  <h5 class="right location-info"> {{ element.location }} </h5>
+                {% else %}
+                  <img class="profile-image" width="50px" height="50px" src ="{{ element.author.profile_img.url }}">
+                  <h4 class="right detail-preacher-title"> {{ element.author.name }} </h4>
+                {% endif  %}
                 </div>
               </div>
             </div>
