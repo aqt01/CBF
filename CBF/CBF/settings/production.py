@@ -3,7 +3,9 @@ import os
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['comunidadbiblicadefe.herokuapp.com']
+ALLOWED_HOSTS = ['comunidadbiblicadefe.herokuapp.com','comunidadbiblicadefe.org', 'www.comunidadbiblicadefe.org',
+        'production.comunidadbiblicadefe.org']
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -44,3 +46,5 @@ ANYMAIL = {
     'MAILGUN_API_KEY': os.environ.get('MAILGUN_ACTIVATE_KEY'),
     'MAILGUN_SENDER_DOMAIN': os.environ.get('MAILGUN_SENDER_DOMAIN'),
 }
+
+ANYMAIL_MAILGUN_API_KEY = os.environ.get('MAILGUN_ACTIVATE_KEY')
