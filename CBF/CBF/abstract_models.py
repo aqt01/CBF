@@ -14,7 +14,7 @@ class CommonElementInfo(TimeStampedModel):
     img = FilerImageField(blank=True, null=True,
                           verbose_name="Imagen del post",
                           help_text="Tamaño sugerido: 1024x765")
-    date_created = models.DateTimeField(verbose_name="Fecha de creacion")
+    date_created = models.DateTimeField(verbose_name="Fecha de creacion",  auto_now_add=True)
 
     def get_tags(self):
         return (self.tags.all())
