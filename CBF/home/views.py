@@ -3,29 +3,18 @@ from django.shortcuts import render
 from CBF.utils import elements_text_search
 from django.views.generic.edit import FormView
 
-
 from sermons.models import Sermon
 from thoughts.models import Thought
 from events.models import Event
 from subscribers.models import Subscriber
 from subscribers.forms import SubscriberForm
+from widgets.models import Slider, BannerGroup
 
 
-class ThanksView(TemplateView):
-    template_name = 'CBF/thanks.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(ThanksView, self).get_context_data(**kwargs)
-        return context
-
-
-class IndexHomeView(FormView):
-    form_class = SubscriberForm
-    template_name = 'CBF/home.html'
-    success_url = '/gracias'
+class IndexHomeViewMixin(object):
 
     def get_context_data(self, **kwargs):
-        context = super(IndexHomeView, self).get_context_data(**kwargs)
+        context = super(IndexHomeViewMixin, self).get_context_data(**kwargs)
         context['last_element'] = Event.objects.last()
         context['last_element_name'] = context['last_element']._meta.verbose_name_plural
         context['events'] = Event.objects.all()[1:3]
@@ -36,13 +25,29 @@ class IndexHomeView(FormView):
 
         context['thoughts'] = Thought.objects.all()[:3]
         context['thought_element_name'] = context['thoughts'][0]._meta.verbose_name_plural
+        slider_group = Slider.objects.filter(extended_object__application_namespace='home').first()
+        context['slider_group'] = slider_group.sliderimage_set.all()
+        context['banner_group'] = BannerGroup.objects.filter(extended_object__application_namespace='home').first()
 
         return context
 
     def form_valid(self, form):
         subscriber = Subscriber.objects.create(email=form.cleaned_data['email'])
-        return super(IndexHomeView, self).form_valid(form)
+        return super(IndexHomeViewMixin, self).form_valid(form)
 
+
+class ThanksView(TemplateView):
+    template_name = 'CBF/thanks.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ThanksView, self).get_context_data(**kwargs)
+        return context
+
+
+class IndexHomeView(IndexHomeViewMixin, FormView):
+    form_class = SubscriberForm
+    template_name = 'CBF/home.html'
+    success_url = '/gracias'
 
 
 class SearchResult(TemplateView):

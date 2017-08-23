@@ -6,19 +6,15 @@
 
 {% block content %}
 
-  {% with request.current_page.bannerextension.title as title  %}
-    {% with request.current_page.bannerextension.content as content  %}
-      {% block banner %}
-        {% include "CBF/components/banner.html" with content=content title=title %}    
-      {% endblock banner %}
-    {% endwith %}
-  {% endwith %}
+    {% block banner %}
+      {% include "CBF/components/banner.html" %}    
+    {% endblock banner %}
 
-  {% with request.current_page.principlegroup.principle_set.all as principles  %}
-    {% block principles %}
-      {% include "CBF/components/principles.html" with principles=principles %}    
-    {% endblock principles %}
-  {% endwith %}
+    {% with principle_group.principle_set.all as principle_group %}
+      {% block principles %}
+        {% include "CBF/components/principles.html" with principle_group=principle_group %}    
+      {% endblock principles %}
+    {% endwith %}
 
     {% placeholder "Titulo de lideres principales" %}
 
@@ -31,7 +27,7 @@
     {% placeholder "Titulos de lideres" %}
   
     {% block leaders %}
-    {% include "CBF/components/leaders.html" with leaders=leaders %}
+      {% include "CBF/components/leaders.html" with leaders=leaders %}
     {% endblock leaders %}
  
 {% endblock content %}

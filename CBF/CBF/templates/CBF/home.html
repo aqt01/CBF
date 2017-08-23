@@ -5,7 +5,7 @@
 
 {% block content %}
  
-{% with request.current_page.slider.sliderimage_set.all as slides  %}
+{% with slider_group as slides  %}
   {% block slideshow %}
     {% include "CBF/components/slideshow.html" with slides=slides %}    
   {% endblock slideshow  %}
@@ -30,7 +30,7 @@
       {% endwith %}
     {% endwith %}
 
-    {% with request.current_page.bannergroup.banner_set.all.0 as banner  %}
+    {% with banner_group.banner_set.all.0 as banner %}
       {% block sermon_banner %}
         {% include "CBF/components/banner.html" with banner=banner %}    
       {% endblock sermon_banner %}
@@ -45,7 +45,7 @@
     {% endwith %}
 
 
-    {% with request.current_page.bannergroup.banner_set.all.1 as banner  %}
+    {% with banner_group.banner_set.all.1 as banner %}
       {% block thought_banner %}
         {% include "CBF/components/banner.html" with banner=banner %}    
       {% endblock thought_banner %}
@@ -61,7 +61,7 @@
 
   </div> <!-- end: container -->
   
-  {% with request.current_page.bannergroup.banner_set.all.2 as banner  %}
+  {% with banner_group.banner_set.all.2 as banner  %}
     {% block follow-us %}
       {% include "CBF/components/follow-us.html" with banner=banner %}    
     {% endblock follow-us %}

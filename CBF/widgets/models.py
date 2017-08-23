@@ -1,6 +1,7 @@
 from django.db import models
 from cms.extensions import PageExtension
 from cms.extensions.extension_pool import extension_pool
+from cms.models.fields import PageField
 
 from CBF.abstract_models import CommonWidgetInfo
 
@@ -8,7 +9,12 @@ from fontawesome.fields import IconField
 
 
 class PrincipleGroup(PageExtension):
-    pass
+
+    def copy_relations(self, oldinstance, language):
+        for principle in oldinstance.principles_set.all():
+            principle.pk = None
+            principle.principlegroup = self
+            principle.save()
 
 
 class Principle(models.Model):
@@ -20,9 +26,20 @@ class Principle(models.Model):
     def __str__(self):
         return self.title
 
+    def copy_relations(self, oldinstance, language):
+        for principle in oldinstance.principlegroup.all():
+            principle.pk = None
+            principle.principle = self
+            principle.save()
+
 
 class BannerGroup(PageExtension):
-    pass
+
+    def copy_relations(self, oldinstance, language):
+        for banner in oldinstance.banner_set.all():
+            banner.pk = None
+            banner.bannergroup = self
+            banner.save()
 
 
 class Banner(CommonWidgetInfo):
@@ -31,12 +48,14 @@ class Banner(CommonWidgetInfo):
     class Meta:
         ordering = ['-created']
 
-    def __str__(self):
-        return self.title
-
 
 class Slider(PageExtension):
-    pass
+
+    def copy_relations(self, oldinstance, language):
+        for banner in oldinstance.sliderimage_set.all():
+            banner.pk = None
+            banner.banner = self
+            banner.save()
 
 
 class SliderImage(CommonWidgetInfo):
