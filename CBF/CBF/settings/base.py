@@ -47,7 +47,7 @@ WSGI_APPLICATION = 'CBF.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'America/Santo_Domingo'
 
@@ -171,6 +171,7 @@ INSTALLED_APPS = (
 LANGUAGES = [
     ## Customize this
     ('en', _('English')),
+    ('es', _('Spanish')),
 
 ]
 

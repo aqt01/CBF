@@ -43,4 +43,3 @@ admin.site.register(Slider, SliderAdmin)
 admin.site.register(SliderImage)
 admin.site.register(PrincipleGroup, PrincipleGroupAdmin)
 admin.site.register(Principle)
-
