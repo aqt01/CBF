@@ -1,4 +1,4 @@
-{% load cms_tags static %}
+{% load cms_tags static CBF_filters %}
       <div class="uk-container uk-container-center">
         <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>
           {% for element in elements %}
@@ -10,8 +10,8 @@
                     <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-column
                     uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
                       <div class="uk-container">
-                        <h2 class='card-title'><a href="/{% filter force_escape|lower %}{{ element_name }}{% endfilter %}/{{ element.slug }}"> {{ element.name }} </a> </h2>  
-                        <div class="uk-panel-badge uk-badge"> {{ element_name }} </div>
+                        <h2 class='card-title'><a href="/{% filter force_escape|lower %}{{ element|get_element_name }}{% endfilter %}/{{ element.slug }}"> {{ element.name }} </a> </h2>  
+                        <div class="uk-panel-badge uk-badge"> {{ element|get_element_name }} </div>
                         <hr class="uk-grid-divider "></hr>
                       </div>                                             
                       <div class="uk-container">

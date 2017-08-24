@@ -1,4 +1,4 @@
-{% load  static  %}
+{% load static CBF_filters %}
 <!-- start: last message -->
       <div class="uk-grid uk-grid-match uk-grid-collapse uk-margin-large-bottom uk-margin-large-top"
         data-uk-grid-match="{target:'.latest-panel'}">
@@ -9,7 +9,7 @@
         </div>
         <div class="uk-width-medium-2-5 latest-panel">
 				  <div class="uk-panel uk-panel-box">
-            <h1 id="message-last-title"> <a href="/{% filter force_escape|lower %}{{ last_element_name }}{% endfilter%}/{{ last_element.slug }}">{{ last_element.name }} </a> </h1> <!-- event title -->
+            <h1 id="message-last-title"> <a href="/{% filter force_escape|lower %}{{ last_element|get_element_name }}{% endfilter%}/{{ last_element.slug }}">{{ last_element.name }} </a> </h1> <!-- event title -->
             <h4 class='card-date'> {{ last_element.date_created|date:"d/m/Y" }} </h4>                
             {% for tag in last_element.tags.all %}
               <a class="uk-badge uk-badge-success card-tag"  href=""> {{ tag.name }} </a>  

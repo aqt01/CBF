@@ -1,6 +1,14 @@
 {% block detail_component %}
 
-{% block title %}  <title> {{ element.name }} - {{ element.author.name }} </title>  {% endblock title %}
+{% block title %} 
+ 
+  {% if element.author %}
+    <title> {{ element.name }} - {{ element.author.name }} </title>
+  {% else %}
+    <title> {{ element.name }} - {{ element.location }} </title>
+  {% endif %}
+
+{% endblock title %}
 
 {% block meta %}
 
@@ -31,7 +39,11 @@
             <p class="detail-content"> {{ element.content }} </p>
             <hr class="uk-grid-divider uk-margin-large-top uk-margin-large-bottom "></hr>
             <div class="uk-flex uk-flex-order-first uk-flex-row uk-flex-middle detail-profile"> 
-              <img class="profile-image" width="50px" height="50px" src =" {{ element.author.profile_img.url }} ">
+              {% if element.author %}
+                <img class="profile-image" width="50px" height="50px" src =" {{ element.author.profile_img.url }} ">
+              {% else %}
+                <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
+              {% endif %}
               <div class="uk-flex uk-flex-middle uk-flex-center uk-flex-column" style="padding-left: 20px;">
                 <h5 class="detail-preacher-title"> {{ element.author.name }} </h5>
                 <h5 class="detail-preacher-role"> {{ element.author.get_role }} </h5>
