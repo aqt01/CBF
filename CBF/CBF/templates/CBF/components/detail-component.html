@@ -1,3 +1,6 @@
+{% load CBF_filters %}
+{% load static from staticfiles %}
+
 {% block detail_component %}
 
 {% block title %} 
@@ -10,6 +13,13 @@
 
 {% endblock title %}
 
+{% block additional_js %}
+
+    <script src="{% static 'js/lightbox.min.js' %}"> </script> <!-- end:slider -->
+    <script src="{% static 'js/lightbox.js' %}"> </script> <!-- end:slider -->
+
+{% endblock additional_js %}
+
 {% block meta %}
 
   <meta property="og:url"         content="{{ request.path }}" />
@@ -19,12 +29,27 @@
   <meta property="og:image"       content="{{ element.img.url }}"/>
 
 {% endblock meta %}
+
   <div class="uk-margin-large-bottom uk-margin-large-top">
    <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>  
       <div class="uk-width-medium-1-1">
         <div class="uk-panel uk-panel-box">
           <div class="uk-panel-teaser">
-            <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
+            {% if element.url  %}
+            <figure class="uk-overlay uk-overlay-scale">
+              <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
+              <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-column uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
+                <div class="uk-container">
+                  <a class="uk-icon-hover uk-icon-play uk-icon-large"  href="#video-modal" data-uk-modal> </a>
+
+                  <div class="uk-panel-badge uk-badge"> {{ element|get_element_name }} </div>
+                </div>
+              </figcaption>
+            </figure>
+
+            {% else %}
+              <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
+            {% endif %}
           </div>
           <div class="uk-panel-badge uk-badge"> {{ element_name }} </div>
             <div class="uk-margin-large-top uk-margin-large-bottom "></div>
@@ -58,5 +83,17 @@
             </div>
           </div>
         </div>
+        <!-- start: Video Modal -->
+          <section>
+            <div id="video-modal" class="uk-modal">
+              <div class="uk-modal-dialog uk-modal-dialog-blank uk-height-viewport">
+                <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+                  <div class="uk-cover-background">
+                    <iframe width="1280" height="720" src="{{ element.url | get_embed_url}}" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </section> <!-- end: Video Modal -->
 
 {% endblock %}

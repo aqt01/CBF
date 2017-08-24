@@ -34,7 +34,9 @@
 
         {% render_block "css" %}
         {% block css %} {% endblock %}
-        {% block jquery %} {% endblock %}
+        {% block js %} {% endblock %}
+        {% block additional_js %} {% endblock %}
+
         {% cms_toolbar %}
         {% fontawesome_stylesheet %}
         {% block menu %} {% endblock %}
@@ -45,4 +47,5 @@
         {% render_block "js" %}
     </body>
   {% block footer %} {% endblock %}
+  {% block javascript %} {% endblock %}
 </html>
