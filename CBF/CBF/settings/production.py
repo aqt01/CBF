@@ -3,9 +3,23 @@ import os
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['comunidadbiblicadefe.herokuapp.com','comunidadbiblicadefe.org', 'www.comunidadbiblicadefe.org',
-        'production.comunidadbiblicadefe.org']
+ALLOWED_HOSTS = ['comunidadbiblicadefe.herokuapp.com','comunidadbiblicadefe.org', 'www.comunidadbiblicadefe.org', 'production.comunidadbiblicadefe.org']
 
+# HTTPS CONFIG
+
+#SECURE_SSL_REDIRECT = True
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# HSTS CONFIG
+
+#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#SECURE_HSTS_SECONDS = 31536000
+
+# COOKIE SECURE CONFIG
+
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
+#SECURE_CONTENT_TYPE_NOSNIFF = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -15,9 +29,12 @@ INSTALLED_APPS += (
     'storages',
 )
 
+# DATABASE CONFIG
+
 DATABASES = dict(default=dj_database_url.config(default=os.environ.get('DATABASE_URL')))
 
-# S3 AWS SETTINGS
+# S3 AWS CONFIG
+
 AWS_STORAGE_BUCKET_NAME = 'comunidadbf'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_SECRET_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
