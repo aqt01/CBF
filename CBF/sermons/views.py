@@ -1,11 +1,10 @@
-from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from sermons.models import Sermon
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django import template
 
 from CBF.utils import elements_related_by_tags
-
 
 class IndexSermonViewMixin(object):
 
@@ -54,6 +53,6 @@ class SermonDetailView(DetailView):
         # We get the object on this detail view and search for related object by tags
         obj = self.get_object()
         tags = obj.get_tags()
-        context['elements'] = elements_related_by_tags(tags, Sermon)
+        context['elements'] = elements_related_by_tags(tags, Sermon, self.get_object())
         context['element_name'] = self.object._meta.verbose_name_plural
         return context

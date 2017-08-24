@@ -54,6 +54,6 @@ class EventDetailView(DetailView):
         # We get the object on this detail view and search for related object by tags
         obj = self.get_object()
         tags = obj.get_tags()
-        context['elements'] = elements_related_by_tags(tags, Event)
+        context['elements'] = elements_related_by_tags(tags, Event, self.get_object())
         context['element_name'] = self.object._meta.verbose_name_plural
         return context

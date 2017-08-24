@@ -21,7 +21,7 @@ def elements_text_search(search_text):
 
     return elements
 
-def elements_related_by_tags(tags, element):
+def elements_related_by_tags(tags, element, element_object):
     number_elements_related = 0
     elements_related = set()
 
@@ -34,16 +34,22 @@ def elements_related_by_tags(tags, element):
 
     else:
         for tag in tags:
-            if ( tag.thought_set.count() > 0 ):
-                for thought in tag.thought_set.all():
-                    elements_related.add(thought)
-            if (tag.sermon_set.count() > 0):
-                for sermon in tag.sermon_set.all():
-                    elements_related.add(sermon)
-            if (tag.event_set.count() > 0):
-                for event in tag.event_set.all():
-                    elements_related.add(event)
+            while (len(elements_related) < 3):
+                if (tag.thought_set.count() > 0):
+                    for thought in tag.thought_set.all():
+                        elements_related.add(tag.thought_set.first())
+                if (tag.sermon_set.count() > 0):
+                    for sermon in tag.sermon_set.all():
+                        elements_related.add(tag.sermon_set.first())
+                if (tag.event_set.count() > 0):
+                    for event in tag.event_set.all():
+                        elements_related.add(tag.event_set.first())
+
+    # Eliminate the same object in detail view
+    elements_related.discard(element_object)
+
     return elements_related
+
 
 def syncronize_with_youtube(title, video_id, description):
     elements = title.split(' | ')
