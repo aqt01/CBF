@@ -1,7 +1,10 @@
 -r base.txt
 
+# production requirements.txt
+
 django-storages==1.6.5
 boto==2.48.0
 django-mailgun==0.9.1
+django-google-analytics==2
 
-# production requirements.txt
+

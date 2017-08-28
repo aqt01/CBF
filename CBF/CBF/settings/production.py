@@ -27,6 +27,7 @@ TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
 
 INSTALLED_APPS += (
     'storages',
+
 )
 
 # DATABASE CONFIG
@@ -65,3 +66,9 @@ ANYMAIL = {
 }
 
 ANYMAIL_MAILGUN_API_KEY = os.environ.get('MAILGUN_ACTIVATE_KEY')
+
+# GOOGLE ANALYTICS TRACKING CODE
+
+GOOGLE_ANALYTICS = {
+            'google_analytics_id': os.environ.get('GOOGLE_ANALYTICS_ID'),
+}

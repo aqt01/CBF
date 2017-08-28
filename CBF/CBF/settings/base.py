@@ -165,7 +165,9 @@ INSTALLED_APPS = (
     'anymail',
     'fontawesome',
     'compressor',
-    'django_extensions'
+    'django_extensions',
+    'google_analytics'
+
 )
 
 LANGUAGES = [
