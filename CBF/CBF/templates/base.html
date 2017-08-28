@@ -1,13 +1,14 @@
 {% load cms_tags menu_tags sekizai_tags fontawesome %}
 {% load static from staticfiles %}
-{% load google_analytics_tags %}
+{% load analytical %}
+
 
 <!doctype html>
 <html>
     <head>
-      <div style="display:none">
-            <img src="{% google_analytics %}" width="0" height="0" />
-      </div>
+      {% analytical_head_top %}
+      {% analytical_head_bottom %}
+      
       {% block meta %} {% endblock meta %}
       {% block title %} {% endblock title %}
 
@@ -49,6 +50,10 @@
     <body>
         {% block content %}{% endblock content %}
         {% render_block "js" %}
+
+        {% analytical_body_top %}
+        {% analytical_body_bottom %}
+
     </body>
   {% block footer %} {% endblock %}
   {% block javascript %} {% endblock %}

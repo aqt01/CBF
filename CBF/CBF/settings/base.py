@@ -166,7 +166,7 @@ INSTALLED_APPS = (
     'fontawesome',
     'compressor',
     'django_extensions',
-    'google_analytics'
+    'analytical'
 
 )
 
@@ -233,6 +233,8 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Santo_Domingo'
+
+# MAILGUN CONFIG
 
 ANYMAIL = {
     "MAILGUN_API_KEY": os.environ.get('MAILGUN_ACTIVATE_KEY'),

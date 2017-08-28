@@ -10,6 +10,12 @@ SECRET_KEY = 'development'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-TEMPLATED_EMAIL_BACKEND =  'templated_email.backends.vanilla_django'
+TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
 
 PAYPAL_TEST = True
+
+INTERNAL_IPS = (
+    '0.0.0.0',
+    '127.0.0.1',
+    'localhost',
+)
