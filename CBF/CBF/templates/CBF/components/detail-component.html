@@ -34,8 +34,8 @@
    <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>  
       <div class="uk-width-medium-1-1">
         <div class="uk-panel uk-panel-box">
+        {% if element.url  %}
           <div class="uk-panel-teaser">
-            {% if element.url  %}
             <figure class="uk-overlay uk-overlay-scale">
               <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
               <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-column uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
@@ -46,12 +46,14 @@
                 </div>
               </figcaption>
             </figure>
-
-            {% else %}
-              <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
-            {% endif %}
           </div>
-          <div class="uk-panel-badge uk-badge"> {{ element_name }} </div>
+            {% else %}
+          <div class="uk-panel-teaser">
+            <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
+            <div class="uk-panel-badge uk-badge"> {{ element_name }} </div>
+          </div>
+            {% endif %}
+
             <div class="uk-margin-large-top uk-margin-large-bottom "></div>
             <h1 class='detail-title'> {{ element.name }} </h1> 
               <div>
