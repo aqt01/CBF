@@ -79,7 +79,7 @@
                 <h5 class="detail-preacher-role"> {{ element.author.get_role }} </h5>
               </div>
               <div class="detail-icon-container uk-flex-order-end">
-                <a id="shareBtn" class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook" ></a> 
+                <a id="fb-share-{{ element.name }}" class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook" ></a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-twitter" href="https://twitter.com/intent/tweet?&text=Estoy viendo {{ element.name }} - {{ element.author.name }}&url={{ request.build_absolute_uri }}&hashtags={{ element_name }}, CBF&via=ComunidadBF"> </a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-inbox " href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.build_absolute_uri }}" >     </a> 
               </div>
@@ -100,7 +100,6 @@
               </div> 
             </div>
           </section> <!-- end: Video Modal -->
-          <a href="{% url element|get_url_detail_app slug=element.slug  %}"> HEEEY </a>
       {% block facebook_share %}
         {% include "CBF/components/fb-share.html" with element=element %}
       {% endblock facebook_share  %}
