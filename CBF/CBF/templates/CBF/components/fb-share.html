@@ -6,7 +6,7 @@
               FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: '{{ request.build_absolute_url }}{% url element|get_url_detail_app slug=element.slug %}',
+                href: '{{ request.build_absolute_uri }}{% url element|get_url_detail_app slug=element.slug %}',
               }, function(response){});
             }
 </script>
