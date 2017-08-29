@@ -18,7 +18,7 @@
                         <div class=" uk-flex uk-flex-center uk-flex-middle uk-flex-space-around uk-text-center">
                           {% for social_media in element.author.socialmedia_set.all %}
                             {% if social_media.name == 0 %}
-                              <a class="uk-icon-hover uk-icon-facebook right card-social-button" href="https://www.facebook.com/dialog/feed?app_id=467287143617437&display=popup&amp;caption={{ element_name }} - {{ element.name }}&link={{request.build_absolute_uri}}&redirect_uri={{ request.build_absolute_uri }}&source={{ element.img.url }}"> </a>
+                            <a id="fb-share-{{ element.name }}" class="uk-icon-hover uk-icon-facebook right card-social-button"> </a>
                             {% endif %}
                             
                             {% if social_media.name == 2 %}
@@ -51,7 +51,13 @@
                 </div>
               </div>
             </div>
-            {% endfor %}
+            {% block facebook_share %}
+              {% include "CBF/components/fb-share.html" with element=element %}
+            {% endblock facebook_share  %}
+
+          {% endfor %}
           </div> 
         </div>
       </div> <!-- end: preaches -->
+
+   

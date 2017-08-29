@@ -53,7 +53,7 @@
             {% else %}
           <div class="uk-panel-teaser">
             <img width="100%" height="300px" src="{{ element.img.url }}" alt="">
-            <div class="uk-panel-badge uk-badge"> {{ element_name }} </div>
+            <div class="uk-panel-badge uk-badge"> {{ element|get_element_name }} </div>
           </div>
             {% endif %}
 
@@ -100,17 +100,8 @@
               </div> 
             </div>
           </section> <!-- end: Video Modal -->
-  {% block additional_javascript %}
-  
-<script>
-document.getElementById('shareBtn').onclick = function() {
-  FB.ui({
-    method: 'share',
-    display: 'popup',
-    href: '{{ request.build_absolute_uri }}',
-  }, function(response){});
-}
-</script>
+      {% block facebook_share %}
+        {% include "CBF/components/fb-share.html" with element=last_element %}
+      {% endblock facebook_share  %}
 
-  {% endblock additional_javascript %}
 {% endblock %}
