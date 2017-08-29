@@ -18,14 +18,14 @@
                         <div class=" uk-flex uk-flex-center uk-flex-middle uk-flex-space-around uk-text-center">
                           {% for social_media in element.author.socialmedia_set.all %}
                             {% if social_media.name == 0 %}
-                              <a class="uk-icon-hover uk-icon-facebook right card-social-button" href="{{ social_media.url }}"> </a>
+                              <a class="uk-icon-hover uk-icon-facebook right card-social-button" href="https://www.facebook.com/sharer/sharer.php?app_id=467287143617437&u={{ request.build_absolute_uri }}&display=popup&ref=plugin&src=share_button"> </a>
                             {% endif %}
                             
                             {% if social_media.name == 2 %}
-                            <a class="uk-icon-hover uk-icon-twitter right card-social-button" href="{{ social_media.url }}"> </a> 
+                            <a class="uk-icon-hover uk-icon-twitter right card-social-button" href="https://twitter.com/intent/tweet?&text={{ element_name }}&url={{ request.build_absolute_uri }}&hashtags={{ element_name }}, CBF&via=ComunidadBF"> </a> 
                             {% endif %}
                           {% endfor %}
-                          <a class="uk-icon-hover uk-icon-inbox right card-social-button" href="mailto:{{ element.author.email }}"> </a>
+                          <a class="uk-icon-hover uk-icon-inbox right card-social-button" href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.build_absolute_uri }}"> </a>
                         </div>  
                       </div>
                       <div class="uk-container">

@@ -79,9 +79,9 @@
                 <h5 class="detail-preacher-role"> {{ element.author.get_role }} </h5>
               </div>
               <div class="detail-icon-container uk-flex-order-end">
-                <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook" href="https://www.facebook.com/sharer/sharer.php?app_id=467287143617437&sdk=joey&u={{ request.build_absolute_uri }}&display=popup&ref=plugin&src=share_button" ></a> 
+                <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook" href="https://www.facebook.com/sharer/sharer.php?app_id=467287143617437&u={{ request.build_absolute_uri }}&display=popup&ref=plugin&src=share_button" ></a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-twitter"
-                   href="https://twitter.com/intent/tweet&text={{ element_name }}&url={{ request.build_absolute_uri }}&hashtags={{ element_name }}, CBF&via=ComunidadBF"> </a> 
+                   href="https://twitter.com/intent/tweet?&text={{ element_name }}&url={{ request.build_absolute_uri }}&hashtags={{ element_name }}, CBF&via=ComunidadBF"> </a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-inbox " href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.build_absolute_uri }}" >     </a> 
               </div>
             </div>
