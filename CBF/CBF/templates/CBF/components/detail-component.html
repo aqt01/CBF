@@ -79,8 +79,7 @@
                 <h5 class="detail-preacher-role"> {{ element.author.get_role }} </h5>
               </div>
               <div class="detail-icon-container uk-flex-order-end">
-                <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook"
-                   href="https://www.facebook.com/dialog/feed?app_id=467287143617437&display=popup&amp;caption={{ element_name }} - {{ element.name }}&link={{request.build_absolute_uri}}&redirect_uri={{ request.build_absolute_uri }}&source={{ element.img.url }}" ></a> 
+                <a id="shareBtn" class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook" ></a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-twitter" href="https://twitter.com/intent/tweet?&text=Estoy viendo {{ element.name }} - {{ element.author.name }}&url={{ request.build_absolute_uri }}&hashtags={{ element_name }}, CBF&via=ComunidadBF"> </a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-inbox " href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.build_absolute_uri }}" >     </a> 
               </div>
@@ -101,4 +100,17 @@
               </div> 
             </div>
           </section> <!-- end: Video Modal -->
+  {% block additional_javascript %}
+  
+<script>
+document.getElementById('shareBtn').onclick = function() {
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: '{{ request.build_absolute_uri }}',
+  }, function(response){});
+}
+</script>
+
+  {% endblock additional_javascript %}
 {% endblock %}
