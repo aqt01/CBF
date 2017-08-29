@@ -3,7 +3,7 @@ from sermons.models import Sermon
 import datetime
 from CBF.settings.local import TIME_ZONE
 
-from sermons.models import Sermon
+from sermons.models import Sermon, Tag
 from events.models import Event
 from thoughts.models import Thought
 
@@ -21,6 +21,26 @@ def elements_text_search(search_text):
 
     return elements
 
+
+# Searchs all elements related to this tag
+# return a set of tags
+def search_elements_related_by_tags(tag_name, max_elements):
+    elements_related = set()
+    tag = Tag.objects.filter(name=tag_name).first()
+
+    if (tag.thought_set.count() > 0):
+        for thought in tag.thought_set.all():
+            elements_related.add(thought)
+    if (tag.sermon_set.count() > 0):
+        for sermon in tag.sermon_set.all():
+            elements_related.add(sermon)
+    if (tag.event_set.count() > 0):
+        for event in tag.event_set.all():
+            elements_related.add(event)
+    return elements_related
+
+
+# Searchs all elements of the same type related to various tags
 def elements_related_by_tags(tags, element, element_object):
     number_elements_related = 0
     elements_related = set()

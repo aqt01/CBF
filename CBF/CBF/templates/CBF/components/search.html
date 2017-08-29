@@ -6,8 +6,7 @@
         <div class="uk-flex uk-flex-column uk-flex-center uk-flex-end uk-flex-middle uk-flex-order-last">
           <img src="{% static "img/logo-no-text.png" %}"  height="240px" width="300px" alt="logo"/>
           <div> 
-            <form class="uk-form uk-margin-top uk-margin-bottom" action="/en/busqueda/" method="post">
-              {% csrf_token %}
+            <form class="uk-form uk-margin-top uk-margin-bottom" action="{% url 'home:search'  %}" method="get">
               <input type="text" name="search" placeholder="Buscar">
               <a id="nav-search-icon" class="uk-icon-button uk-icon-small uk-icon-search uk-text-center uk-text-bottom" href="#search-modal" data-uk-modal> </a>
             </form> 
@@ -28,4 +27,3 @@
       </div> 
     </div>
   </section> <!-- end:modals -->
-

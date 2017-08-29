@@ -26,20 +26,9 @@ class Principle(models.Model):
     def __str__(self):
         return self.title
 
-    def copy_relations(self, oldinstance, language):
-        for principle in oldinstance.principlegroup.all():
-            principle.pk = None
-            principle.principle = self
-            principle.save()
-
 
 class BannerGroup(PageExtension):
-
-    def copy_relations(self, oldinstance, language):
-        for banner in oldinstance.banner_set.all():
-            banner.pk = None
-            banner.bannergroup = self
-            banner.save()
+    pass
 
 
 class Banner(CommonWidgetInfo):
@@ -48,14 +37,13 @@ class Banner(CommonWidgetInfo):
     class Meta:
         ordering = ['-created']
 
+    def __str__(self):
+        return self.title
+
+
 
 class Slider(PageExtension):
-
-    def copy_relations(self, oldinstance, language):
-        for banner in oldinstance.sliderimage_set.all():
-            banner.pk = None
-            banner.banner = self
-            banner.save()
+    pass
 
 
 class SliderImage(CommonWidgetInfo):

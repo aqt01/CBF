@@ -12,7 +12,7 @@
             <h1 id="message-last-title"> <a href="/{% filter force_escape|lower %}{{ last_element|get_element_name }}{% endfilter%}/{{ last_element.slug }}">{{ last_element.name }} </a> </h1> <!-- event title -->
             <h4 class='card-date'> {{ last_element.date_created|date:"d/m/Y" }} </h4>                
             {% for tag in last_element.tags.all %}
-              <a class="uk-badge uk-badge-success card-tag"  href=""> {{ tag.name }} </a>  
+              <a class="uk-badge uk-badge-success card-tag"  href="{% url 'home:search' %}?tag={{ tag.name }}"> {{ tag.name }} </a>  
             {% endfor %}
             <h3 class="latest-card-content"> {{ last_element.summary }}  </h3>
             <div class="uk-margin-large-top"> </div>

@@ -25,7 +25,7 @@
               </figure>
             </div>
             {% for tag in element.tags.all %}
-              <a class="uk-badge uk-badge-success card-tag"  href=""> {{ tag.name }}  </a> 
+              <a class="uk-badge uk-badge-success card-tag"  href="{% url 'home:search' %}?tag={{ tag.name }}"> {{ tag.name }}  </a> 
             {% endfor %}
             <h5 class='card-date'> {{ element.date_created|date:"d/m/Y" }}  </h6>
             <h3 class="card-content"> {{ element.summary }} </h3>

@@ -58,7 +58,7 @@
             <h1 class='detail-title'> {{ element.name }} </h1> 
               <div>
                 {% for tag in element.tags.all %}
-                  <a class="uk-badge uk-badge-success card-tag"  href=""> {{ tag.name }} </a>  
+                  <a class="uk-badge uk-badge-success card-tag"  href="{% url 'home:search' %}?tag={{ tag.name }}"> {{ tag.name }} </a>  
                 {% endfor %}
              </div> 
               <h6 class='card-date left'> {{ element.date_created|date:"d/m/Y" }} </h6>                

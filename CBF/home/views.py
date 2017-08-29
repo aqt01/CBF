@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render
-from CBF.utils import elements_text_search
+from CBF.utils import elements_text_search, search_elements_related_by_tags
 from django.views.generic.edit import FormView
 
 from sermons.models import Sermon
@@ -53,7 +53,9 @@ class IndexHomeView(IndexHomeViewMixin, FormView):
 class SearchResult(TemplateView):
     template_name = 'CBF/elements-list.html'
 
-    def post(self, request, **kwargs):
-        print(request.POST)
-        elements = elements_text_search(request.POST['search'])
+    def get(self,  request, **kwargs):
+        if (request.GET.get('search')):
+            elements = elements_text_search(request.GET.get('search'))
+        elif (request.GET.get('tag')):
+            elements = search_elements_related_by_tags(request.GET.get('tag'),10)
         return render(request, self.template_name, {'elements': elements})
