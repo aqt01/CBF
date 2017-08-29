@@ -16,8 +16,9 @@
                   </div>                                             
                   <div class="uk-container">
                     <div class=" uk-flex uk-flex-center uk-flex-middle uk-flex-space-around uk-text-center">
-                      <a class="uk-icon-hover uk-icon-inbox right card-social-button" href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.build_absolute_uri }}"> </a> 
-                      <a class="uk-icon-hover uk-icon-twitter right card-social-button" href="https://twitter.com/intent/tweet?&text={{ element_name }}&url={{ request.build_absolute_uri }}&hashtags={{ element_name }}, CBF&via=ComunidadBF"> </a> 
+                      <a class="uk-icon-hover uk-icon-inbox right card-social-button" href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}"> </a> 
+                      <a class="uk-icon-hover uk-icon-twitter right card-social-button"
+                        href="https://twitter.com/intent/tweet?&text={{ element_name }}&url={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}&hashtags={{ element_name }}&via=ComunidadBF"> </a> 
                       <a id="fb-share-{{ element.name }}" class="uk-icon-hover uk-icon-facebook right card-social-button"> </a> 
                     </div>  
                   </div>

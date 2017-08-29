@@ -8,8 +8,8 @@
           </div>
         </div>
         <div class="uk-width-medium-2-5 latest-panel">
-				  <div class="uk-panel uk-panel-box">
-            <h1 id="message-last-title"> <a href="/{% filter force_escape|lower %}{{ last_element|get_element_name }}{% endfilter%}/{{ last_element.slug }}">{{ last_element.name }} </a> </h1> <!-- event title -->
+			<div class="uk-panel uk-panel-box">
+            <h1 id="message-last-title"> <a href="{% url last_element|get_url_detail_app slug=last_element.slug %}">{{ last_element.name }} </a> </h1> <!-- event title -->
             <h4 class='card-date'> {{ last_element.date_created|date:"d/m/Y" }} </h4>                
             {% for tag in last_element.tags.all %}
               <a class="uk-badge uk-badge-success card-tag"  href="{% url 'home:search' %}?tag={{ tag.name }}"> {{ tag.name }} </a>  
@@ -18,7 +18,7 @@
             <div class="uk-margin-large-top"> </div>
               <div class="uk-flex uk-flex-middle uk-flex-order-first uk-flex-row">
                 {% if last_element.location != None %}
-                  <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
+                  <a class="uk-icon-map-marker uk-icon-large"  href="{{ last_element.gmail_link.url }}">  </a>
                   <h5 class="location-info"> {{ last_element.location }} </h5>
                 {% else %}
                 <img class="profile-image" width="50px" height="50px" src ="{{ last_element.author.profile_img.url }}">
@@ -29,13 +29,14 @@
             <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-row">
               {% for social_media in last_element.author.socialmedia_set.all %}
                 {% if social_media.name == 0 %}
-                <a id="fb-share-{{ element.name }}" class="uk-icon-button uk-icon-large uk-icon-facebook"> </a> 
+                <a id="fb-share-{{ last_element.name }}" class="uk-icon-button uk-icon-large uk-icon-facebook"> </a> 
                 {% endif %}
                 {% if social_media.name == 2 %}
-                <a class="uk-icon-button uk-icon-large uk-icon-twitter" href="https://twitter.com/intent/tweet?&text={{ element_name }}&url={{ request.build_absolute_uri }}&hashtags={{ element_name }}, CBF&via=ComunidadBF"> </a> 
+                <a class="uk-icon-button uk-icon-large uk-icon-twitter" href="https://twitter.com/intent/tweet?&text={{
+                  element_name }}&url={{ request.get_host }}{% url last_element|get_url_detail_app slug=last_element.slug %}&hashtags={{ last_element_name }}&via=ComunidadBF"> </a> 
                 {% endif %}
               {% endfor %}
-              <a class="uk-icon-button uk-icon-large uk-icon-inbox" href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.build_absolute_uri }}"> </a> 
+              <a class="uk-icon-button uk-icon-large uk-icon-inbox" href="mailto:?subject={{ last_element_name }} - {{ last_element.name }}&body={{ request.get_host }}{% url last_element|get_url_detail_app slug=last_element.slug %}"> </a> 
             </div>
           </div>
         </div>

@@ -100,6 +100,7 @@
               </div> 
             </div>
           </section> <!-- end: Video Modal -->
+          <h1> {{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %} </h1>
       {% block facebook_share %}
         {% include "CBF/components/fb-share.html" with element=element %}
       {% endblock facebook_share  %}
