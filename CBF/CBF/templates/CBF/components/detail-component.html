@@ -26,7 +26,9 @@
   <meta property="og:type"        content="article" />
   <meta property="og:title"       content="{{ element.name }}" />
   <meta property="og:description" content="{{ element.content }}" />
-  <meta property="og:image"       content="{{ element.img.url }}"/>
+  <meta property="og:image"       content="{{ element.img.url }}" />
+  <meta property="og:site_name"       content="Comunidad Biblica De Fe" />
+
 
 {% endblock meta %}
 
@@ -76,7 +78,7 @@
                 <h5 class="detail-preacher-role"> {{ element.author.get_role }} </h5>
               </div>
               <div class="detail-icon-container uk-flex-order-end">
-                <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook " ></a> 
+                <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-facebook " href="https://www.facebook.com/sharer/sharer.php?app_id=467287143617437&sdk=joey&u={{ request.build_absolute_uri }}&display=popup&ref=plugin&src=share_button" ></a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-twitter  " > </a> 
                 <a class="uk-icon-hover detail-icon uk-icon-medium uk-icon-inbox ">     </a> 
               </div>

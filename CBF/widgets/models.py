@@ -19,7 +19,7 @@ class PrincipleGroup(PageExtension):
 
 class Principle(models.Model):
     title = models.CharField(verbose_name="Titulo", max_length=150, blank=True)
-    content = models.CharField(verbose_name="Contenido", max_length=150, blank=True)
+    content = models.CharField(verbose_name="Contenido", max_length=800, blank=True)
     icon = IconField()
     principles = models.ForeignKey(PrincipleGroup, blank=True)
 

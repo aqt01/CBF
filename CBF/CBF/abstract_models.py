@@ -36,7 +36,7 @@ class CommonWidgetInfo(TimeStampedModel):
 
 
 class CommonPostInfo(CommonElementInfo):
-    content = HTMLField(verbose_name="Contenido", max_length=1200, blank=True)
+    content = HTMLField(verbose_name="Contenido", max_length=2000, blank=True)
 
     def get_tags(self):
         return (self.tags.all())
