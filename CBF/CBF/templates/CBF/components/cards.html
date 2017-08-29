@@ -10,7 +10,7 @@
                     <figcaption class="uk-overlay-panel uk-overlay-background uk-flex uk-flex-center uk-flex-column
                     uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
                       <div class="uk-container">
-                        <h2 class='card-title'><a href="/{% filter force_escape|lower %}{{ element|get_element_name }}{% endfilter %}/{{ element.slug }}"> {{ element.name }} </a> </h2>  
+                        <h2 class='card-title'><a href="{% url element|get_url_detail_app slug=element.slug %}"> {{ element.name }} </a> </h2>  
                         <div class="uk-panel-badge uk-badge"> {{ element|get_element_name }} </div>
                         <hr class="uk-grid-divider "></hr>
                       </div>                                             

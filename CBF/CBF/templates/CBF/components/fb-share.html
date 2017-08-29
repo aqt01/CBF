@@ -6,7 +6,7 @@
               FB.ui({
                 method: 'share',
                 display: 'popup',
-                href: '{{ request.build_absolute_uri }}/{% filter force_escape|lower %}{{ element|get_element_name }}{% endfilter %}/{{ element.slug }}',
+                href: '{% url element|get_url_detail_app slug=element.slug %}',
               }, function(response){});
             }
 </script>

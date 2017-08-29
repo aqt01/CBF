@@ -100,8 +100,9 @@
               </div> 
             </div>
           </section> <!-- end: Video Modal -->
+          <a href="{% url element|get_url_detail_app slug=element.slug  %}"> HEEEY </a>
       {% block facebook_share %}
-        {% include "CBF/components/fb-share.html" with element=last_element %}
+        {% include "CBF/components/fb-share.html" with element=element %}
       {% endblock facebook_share  %}
 
 {% endblock %}
