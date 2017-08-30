@@ -23,7 +23,7 @@
                             
                             {% if social_media.name == 2 %}
                               <a class="uk-icon-hover uk-icon-twitter right card-social-button"
-                                href="https://twitter.com/intent/tweet?&text=Estoy viendo {{ element.name }} - {{element.author.name }}&url={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}&hashtags={{ element_name }}&via=ComunidadBF"> </a> 
+                                href="https://twitter.com/intent/tweet?&text={{ element.name }} - {{element.author.name }}&url={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}&hashtags={{ element_name }}&via=ComunidadBF"> </a> 
                             {% endif %}
                           {% endfor %}
                           <a class="uk-icon-hover uk-icon-inbox right card-social-button" href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}"> </a>
@@ -55,7 +55,6 @@
             {% block facebook_share %}
               {% include "CBF/components/fb-share.html" with element=element %}
             {% endblock facebook_share  %}
-
           {% endfor %}
           </div> 
         </div>

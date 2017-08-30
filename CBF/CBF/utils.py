@@ -49,25 +49,25 @@ def elements_related_by_tags(tags, element, element_object):
         number_elements_related += tag.get_count_related_objects()
 
     # If no topics related. we show last elements of this category
-    if (number_elements_related < 4):
-        return element.objects.all().order_by('date_created')[0:3]
+    if (number_elements_related < 3):
+        return element.objects.all().order_by('date_created')[0:2]
 
     else:
         for tag in tags:
-            while (len(elements_related) < 3):
-                if (tag.thought_set.count() > 0):
-                    for thought in tag.thought_set.all():
-                        elements_related.add(tag.thought_set.first())
-                if (tag.sermon_set.count() > 0):
-                    for sermon in tag.sermon_set.all():
-                        elements_related.add(tag.sermon_set.first())
-                if (tag.event_set.count() > 0):
-                    for event in tag.event_set.all():
-                        elements_related.add(tag.event_set.first())
+            if (tag.thought_set.count() > 0):
+                for thought in tag.thought_set.all():
+                    if (len(elements_related) == 2):
+                        break
+                    elements_related.add(thought)
+            if (tag.sermon_set.count() > 0):
+                for sermon in tag.sermon_set.all():
+                    if (len(elements_related) == 2):
+                        break
+                    elements_related.add(sermon)
+
 
     # Eliminate the same object in detail view
     elements_related.discard(element_object)
-
     return elements_related
 
 

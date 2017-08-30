@@ -29,11 +29,10 @@
             <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-row">
               {% for social_media in last_element.author.socialmedia_set.all %}
                 {% if social_media.name == 0 %}
-                <a id="fb-share-{{ last_element.name }}" class="uk-icon-button uk-icon-large uk-icon-facebook"> </a> 
-                {% endif %}
+                <a id="fb-share-{{ last_element.name }}" class="uk-icon-button uk-icon-large uk-icon-facebook"> </a>
+                 {% endif %}
                 {% if social_media.name == 2 %}
-                <a class="uk-icon-button uk-icon-large uk-icon-twitter" href="https://twitter.com/intent/tweet?&text={{
-                  element_name }}&url={{ request.get_host }}{% url last_element|get_url_detail_app slug=last_element.slug %}&hashtags={{ last_element_name }}&via=ComunidadBF"> </a> 
+                <a class="uk-icon-button uk-icon-large uk-icon-twitter" href="https://twitter.com/intent/tweet?&text={{ element_name }}&url={{ request.get_host }}{% url last_element|get_url_detail_app slug=last_element.slug %}&hashtags={{ last_element_name }}&via=ComunidadBF"> </a> 
                 {% endif %}
               {% endfor %}
               <a class="uk-icon-button uk-icon-large uk-icon-inbox" href="mailto:?subject={{ last_element_name }} - {{ last_element.name }}&body={{ request.get_host }}{% url last_element|get_url_detail_app slug=last_element.slug %}"> </a> 

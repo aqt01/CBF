@@ -1,6 +1,7 @@
 {% load cms_tags CBF_filters %}
       <!-- start: big-cards -->
-      <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>
+      <div class="uk-container uk-container-center">
+        <div class="uk-grid uk-margin-large-top uk-margin-large-bottom" data-uk-grid-margin>
         {% for element in elements %}
         <div class="uk-width-medium-1-2">
           <div class="uk-panel uk-panel-box">
@@ -11,14 +12,13 @@
                 uk-flex-middle  uk-text-center uk-overlay uk-overlay-scale">
                   <div class="uk-container">
                     <h2 class='card-title'><a href="{% url element|get_url_detail_app slug=element.slug %}"> {{ element.name }}  </a> </h2>  
-                    <div class="uk-panel-badge uk-badge"> {{ element_name }} </div>
+                    <div class="uk-panel-badge uk-badge"> {{ element|get_element_name }} </div>
                     <hr class="uk-grid-divider "></hr>
                   </div>                                             
                   <div class="uk-container">
                     <div class=" uk-flex uk-flex-center uk-flex-middle uk-flex-space-around uk-text-center">
-                      <a class="uk-icon-hover uk-icon-inbox right card-social-button" href="mailto:?subject={{ element_name }} - {{ element.name }}&body={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}"> </a> 
-                      <a class="uk-icon-hover uk-icon-twitter right card-social-button"
-                        href="https://twitter.com/intent/tweet?&text={{ element_name }}&url={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}&hashtags={{ element_name }}&via=ComunidadBF"> </a> 
+                      <a class="uk-icon-hover uk-icon-inbox right card-social-button" href="mailto:?subject={{ element|get_element_name }} - {{ element.name }}&body={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}"> </a> 
+                      <a class="uk-icon-hover uk-icon-twitter right card-social-button" href="https://twitter.com/intent/tweet?&text={{ element|get_element_name }}&url={{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %}&hashtags={{ element|get_element_name }}&via=ComunidadBF"> </a> 
                       <a id="fb-share-{{ element.name }}" class="uk-icon-hover uk-icon-facebook right card-social-button"> </a> 
                     </div>  
                   </div>
@@ -30,14 +30,19 @@
             {% endfor %}
             <h5 class='card-date'> {{ element.date_created|date:"d/m/Y" }}  </h6>
             <h3 class="card-content"> {{ element.summary }} </h3>
-            <div class="left"> 
+            <div class="left">
+            {% if element.location != None %}
               <a class="uk-icon-map-marker uk-icon-large"  href="{{ element.gmail_link.url }}">  </a>
               <h5 class="right location-info"> {{ element.location }} </h5>
+            {% else %}
+              <img class="profile-image" width="50px" height="50px" src ="{{ element.author.profile_img.url }}">
+              <h4 class="right detail-preacher-title"> {{ element.author.name }} </h4>
+            {% endif %}               
             </div>
           </div>
-        </div>  <!-- end: big cards-ll->
+        </div>  <!-- end: big cards-ll-->
       {% block facebook_share %}
-        {% include "CBF/components/fb-share.html" with element=last_element %}
+        {% include "CBF/components/fb-share.html" with element=element %}
       {% endblock facebook_share  %}
 
-        {% endfor %} 
+      {% endfor %}
