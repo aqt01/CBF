@@ -10,31 +10,39 @@
       {% include "CBF/components/banner.html" %}    
     {% endblock banner %}
   
-  <div class="uk-container uk-container-center">
+    <div class="uk-container uk-container-center">
 
-   {% placeholder "Texto direccion de la iglesia" %}
- 
-   {% placeholder "Mapa de la iglesia" %}
+     {% placeholder "Titulo mapa la iglesia" %}
    
-   {% placeholder "Titulo de principios" %}
+     {% placeholder "Mapa de la iglesia" %}
+     
+     {% placeholder "Titulo de principios" %}
 
-  </div>
+    </div>
     {% with principle_group.principle_set.all as principle_group %}
       {% block principles %}
         {% include "CBF/components/principles.html" with principle_group=principle_group %}    
       {% endblock principles %}
     {% endwith %}
 
-    {% placeholder "Titulo de lideres principales" %}
+    <div class="uk-container uk-container-center">
 
+      {% placeholder "Titulo de lideres principales" %}
+    
+    </div>
+    
     {% with main_leaders as leaders %}
       {% block main_leaders %}
         {% include "CBF/components/leaders.html" with leaders=leaders %}    
       {% endblock main_leaders %}
     {% endwith %}
 
-    {% placeholder "Titulos de lideres" %}
-  
+     <div class="uk-container uk-container-center">
+
+      {% placeholder "Titulos de lideres" %}
+    
+    </div>
+    
     {% block leaders %}
       {% include "CBF/components/leaders.html" with leaders=leaders %}
     {% endblock leaders %}
