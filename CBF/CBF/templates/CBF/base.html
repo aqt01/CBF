@@ -89,19 +89,24 @@
 
       <footer class=" uk-container uk-grid tm-footer  uk-margin-large-left uk-margin-large-right">      
         <div class="uk-width-1-3 uk-text-center">
-          <h3>+809 200 8924</h3>
-          <p>info@comunidadbf.org</p>
-          <div class="uk-flex uk-flex-center uk-flex-center">
-            <a class="uk-icon-twitter uk-icon-small icon-footer" href="https://twitter.com/ComunidadBF"></a>
-            <a class="uk-icon-facebook uk-icon-small footer-icon" href="https://www.facebook.com/CBiblicadeFe/" ></a>
-            <a class="uk-icon-instagram uk-icon-small footer-icon" href="https://www.instagram.com/comunidadbf/"></a>
-          </div>
+          {% static_placeholder "Mapa de la iglesia (footer)" %}
         </div>
 
-        <div class="uk-width-1-3 tm-address-lines uk-text-center uk-text-justify">
-          <p> Calle Rosario esq. San Juan Bautista </p>
-          <p> Sector Renacimiento, Santo Domingo</p>
-          <p> Republica Dominicana </p>
+        <div class="uk-width-1-3">
+          <div class="uk-text-center ">
+            <h3> +809 200 8924 </h3>
+            <p> Calle Cecilia Balaguer #8 </p>
+            <p>  Santo Domingo   </p>
+
+            <div class="uk-flex uk-flex-center uk-flex-center">
+              <a class="uk-icon-twitter uk-icon-small footer-icon" href="https://twitter.com/ComunidadBF"></a>
+              <a class="uk-icon-facebook uk-icon-small footer-icon" href="https://www.facebook.com/CBiblicadeFe/" ></a>
+              <a class="uk-icon-instagram uk-icon-small footer-icon" href="https://www.instagram.com/comunidadbf/"></a>
+            </div>
+          </div>
+
+
+
         </div>
         
         <div class="uk-width-1-3 tm-address-lines">
@@ -116,7 +121,9 @@
       <section class="uk-container uk-margin-large-bottom uk-margin-large-top uk-margin-large-left uk-margin-large-right">
         <div class="uk-flex uk-flex-space-between">
           <a href="/"><img src="{% static 'img/logo-no-text.png' %}"  height="80px" width="100px" alt="logo"/></a>
-          <h5>© 2017 -  Comunidad Biblica De Fe</h5>
+          <h5> © 2017 -  Comunidad Biblica De Fe </h5>
+
+
         </div>
       </section>
     </div>

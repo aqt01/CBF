@@ -9,13 +9,7 @@ from fontawesome.fields import IconField
 
 
 class PrincipleGroup(PageExtension):
-
-    def copy_relations(self, oldinstance, language):
-        for principle in oldinstance.principles_set.all():
-            principle.pk = None
-            principle.principlegroup = self
-            principle.save()
-
+    pass
 
 class Principle(models.Model):
     title = models.CharField(verbose_name="Titulo", max_length=150, blank=True)

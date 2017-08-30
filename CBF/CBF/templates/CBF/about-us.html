@@ -9,7 +9,16 @@
     {% block banner %}
       {% include "CBF/components/banner.html" %}    
     {% endblock banner %}
+  
+  <div class="uk-container uk-container-center">
 
+   {% placeholder "Texto direccion de la iglesia" %}
+ 
+   {% placeholder "Mapa de la iglesia" %}
+   
+   {% placeholder "Titulo de principios" %}
+
+  </div>
     {% with principle_group.principle_set.all as principle_group %}
       {% block principles %}
         {% include "CBF/components/principles.html" with principle_group=principle_group %}    

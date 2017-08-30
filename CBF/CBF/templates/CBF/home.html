@@ -14,6 +14,12 @@
 
   <div class="uk-container uk-container-center">
 
+    {% with banner_group.banner_set.all.0 as banner %}
+      {% block event_banner %}
+        {% include "CBF/components/banner.html" with banner=banner %}    
+      {% endblock event_banner %}
+    {% endwith %}
+
     {% with last_event as element %}
       {% with last_element_name as element_name %}
         {% block last_message %}
@@ -30,7 +36,7 @@
       {% endwith %}
     {% endwith %}
 
-    {% with banner_group.banner_set.all.0 as banner %}
+    {% with banner_group.banner_set.all.1 as banner %}
       {% block sermon_banner %}
         {% include "CBF/components/banner.html" with banner=banner %}    
       {% endblock sermon_banner %}
@@ -45,7 +51,7 @@
     {% endwith %}
 
 
-    {% with banner_group.banner_set.all.1 as banner %}
+    {% with banner_group.banner_set.all.2 as banner %}
       {% block thought_banner %}
         {% include "CBF/components/banner.html" with banner=banner %}    
       {% endblock thought_banner %}
@@ -61,7 +67,7 @@
 
   </div> <!-- end: container -->
   
-  {% with banner_group.banner_set.all.2 as banner  %}
+  {% with banner_group.banner_set.all.3 as banner  %}
     {% block follow-us %}
       {% include "CBF/components/follow-us.html" with banner=banner %}    
     {% endblock follow-us %}

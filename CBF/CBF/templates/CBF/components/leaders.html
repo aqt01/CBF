@@ -4,7 +4,7 @@
   
   <!-- start: main leaders -->
   <div class="uk-container uk-container-center">
-    <div class="uk-grid uk-margin-large-bottom uk-margin-large-top" data-uk-grid-margin>
+    <div class="uk-flex uk-flex-center uk-flex-middle">
       {% for leader in leaders %}
       <div class="uk-width-medium-1-3 uk-text-center">
         <div class="uk-thumbnail uk-overlay-hover uk-border-circle">
@@ -29,7 +29,7 @@
         <p> <a href="#modal-form" class="uk-icon-button uk-icon-calendar-plus-o" data-uk-modal></a> </p>
         <h2 class="uk-margin-bottom-remove"> {{ leader.name }} </h2>
         <p class="uk-text-large uk-margin-top-remove uk-text-muted"> {{ leader.role_description }} </p>
-      </div> <!-- end: cris-diana -->
+      </div> <!-- end: leader -->
       {% endfor %} 
     </div> <!-- end: main leaders -->
   </div>

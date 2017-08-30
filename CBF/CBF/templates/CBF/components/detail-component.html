@@ -27,9 +27,8 @@
   <meta property="og:title"       content="{{ element.name }}" />
   <meta property="og:description" content="{{ element.content }}" />
   <meta property="og:image"       content="{{ element.img }}" />
-  <meta property="og:site_name"       content="Comunidad Biblica De Fe" />
-  <meta property="fb:app_id"       content="467287143617437" />
-
+  <meta property="og:site_name"   content="Comunidad Biblica De Fe" />
+  <meta property="fb:app_id"      content="467287143617437" />
 
 {% endblock meta %}
 
@@ -89,18 +88,17 @@
           </div>
         </div>
         <!-- start: Video Modal -->
-          <section>
-            <div id="video-modal" class="uk-modal">
-              <div class="uk-modal-dialog uk-modal-dialog-blank uk-height-viewport">
-                <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle">
-                  <div class="uk-cover-background">
-                    <iframe width="1280" height="720" src="{{ element.url | get_embed_url}}" frameborder="0" allowfullscreen></iframe>
-                  </div>
+        <section>
+          <div id="video-modal" class="uk-modal">
+            <div class="uk-modal-dialog uk-modal-dialog-blank uk-height-viewport">
+              <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+                <div class="uk-cover-background">
+                  <iframe width="1280" height="720" src="{{ element.url | get_embed_url}}" frameborder="0" allowfullscreen></iframe>
                 </div>
-              </div> 
-            </div>
-          </section> <!-- end: Video Modal -->
-          <h1> {{ request.get_host }}{% url element|get_url_detail_app slug=element.slug %} </h1>
+              </div>
+            </div> 
+          </div>
+        </section> <!-- end: Video Modal -->
       {% block facebook_share %}
         {% include "CBF/components/fb-share.html" with element=element %}
       {% endblock facebook_share  %}

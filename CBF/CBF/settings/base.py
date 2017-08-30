@@ -246,3 +246,7 @@ DEFAULT_FROM_EMAIL = "postmaster@" + os.environ.get('MAILGUN_SENDER_DOMAIN')
 
 MAILGUN_ACCESS_KEY = os.environ.get('MAILGUN_ACTIVATE_KEY')
 MAILGUN_SERVER_NAME = os.environ.get('MAILGUN_SENDER_DOMAIN')
+
+# djangocms googlemap
+
+DJANGOCMS_GOOGLEMAP_API_KEY = os.environ.get('GOOGLE_MAP_API_KEY')
