@@ -4,14 +4,14 @@
 
 {% block content %}
  
-  <!-- start: container -->
-  <div class="uk-container uk-container-center">
-
-  {% with banner_group.banner_set.all.0 as banner %}
-    {% block post_banner %}
-      {% include "CBF/components/banner.html" with banner=banner %}    
-    {% endblock post_banner %}
-  {% endwith %}
+    {% with request.current_page.bannergroup.banner_set.all.0 as banner %}
+      {% block event_banner %}
+        {% include "CBF/components/banner.html" with banner=banner %}    
+      {% endblock event_banner %}
+    {% endwith %}
+  
+	<!-- start: container -->  
+	<div class="uk-container uk-container-center">
 
   {% with element_name as last_element_name %}
     {% block last_message %}

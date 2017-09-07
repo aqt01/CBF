@@ -24,6 +24,12 @@ class Principle(models.Model):
 class BannerGroup(PageExtension):
     pass
 
+    def copy_relations(self, oldinstance, language):
+        for banner in oldinstance.banner_set.all():
+            banner.pk = None
+            banner.banners = self
+            banner.save()
+
 
 class Banner(CommonWidgetInfo):
     banners = models.ForeignKey(BannerGroup, blank=True)
@@ -33,8 +39,6 @@ class Banner(CommonWidgetInfo):
 
     def __str__(self):
         return self.title
-
-
 
 class Slider(PageExtension):
     pass
