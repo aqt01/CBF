@@ -3,9 +3,9 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 from django.utils.translation import ugettext_lazy as _
 from newsletter.utils import make_activation_code
-from django.core.mail import send_mail
-from CBF.settings import base
+from .tasks import task_send_email
 import os
+
 
 # TODO: Every youtube upload should generate this
 class Subscriber(TimeStampedModel):
@@ -17,11 +17,10 @@ class Subscriber(TimeStampedModel):
                                     )
 
     def save(self, **kwargs):
-        send_mail(
+        task_send_email.delay(
             _('Suscribirse a Comunidad Biblica De Fe'),
             _('Para inscribirse ingrese a esta direccion'),
             os.environ.get('MAILGUN_HOST_USER'),
             [self.email],
-            fail_silently=False,
         )
         super(Subscriber, self).save(**kwargs)
