@@ -1,5 +1,6 @@
 from .base import *
 import os
+import raven
 
 DEBUG = False
 
@@ -27,8 +28,15 @@ TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
 
 INSTALLED_APPS += (
     'storages',
-
+    'raven.contrib.django.raven_compat',
 )
+
+RAVEN_CONFIG = {
+    'dsn': os.environ.get('SENTRY_DSN'),
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
 
 # DATABASE CONFIG
 
@@ -53,7 +61,7 @@ DEFAULT_FILE_STORAGE = 'CBF.custom_storages.MediaStorage'
 
 # ANYMAIL PRODUCTION CONFIG
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = os.environ.get('MAILGUN_EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('MAILGUN_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_HOST_PASSWORD')
 EMAIL_USE_TLS = True

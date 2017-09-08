@@ -1,4 +1,5 @@
 from .base import *
+import os
 
 DEBUG = True
 
@@ -7,6 +8,34 @@ ALLOWED_HOSTS = ['comunidadbiblicadefestaging.herokuapp.com', 'staging.comunidad
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 TEMPLATED_EMAIL_BACKEND =  'templated_email.backends.vanilla_django'
+
+INSTALLED_APPS += (
+    'storages',
+    'raven.contrib.django.raven_compat',
+)
+
+RAVEN_CONFIG = {
+    'dsn': os.environ.get('SENTRY_DSN'),
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
+
+# ANYMAIL PRODUCTION CONFIG
+EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get('MAILGUN_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+ANYMAIL = {
+    'MAILGUN_API_KEY': os.environ.get('MAILGUN_ACTIVATE_KEY'),
+    'MAILGUN_SENDER_DOMAIN': os.environ.get('MAILGUN_SENDER_DOMAIN'),
+}
+
+ANYMAIL_MAILGUN_API_KEY = os.environ.get('MAILGUN_ACTIVATE_KEY')
 
 AWS_STORAGE_BUCKET_NAME = 'comunidadbf-staging'
 
@@ -26,10 +55,9 @@ AWS_STORAGE_BUCKET_NAME = 'comunidadbf-staging'
 #CSRF_COOKIE_SECURE = True
 #SECURE_CONTENT_TYPE_NOSNIFF = True
 
-
 # ANYMAIL PRODUCTION CONFIG
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = os.environ.get('MAILGUN_EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('MAILGUN_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_HOST_PASSWORD')
 EMAIL_USE_TLS = True
