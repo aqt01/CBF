@@ -19,8 +19,9 @@ RAVEN_CONFIG = {
     'dsn': os.environ.get('SENTRY_DSN'),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
-}
+    'release': os.environ.get['HEROKU_SLUG_COMMIT'],
+
+    }
 
 # ANYMAIL PRODUCTION CONFIG
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'

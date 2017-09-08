@@ -22,6 +22,7 @@ ALLOWED_HOSTS = ['comunidadbiblicadefe.herokuapp.com','comunidadbiblicadefe.org'
 #CSRF_COOKIE_SECURE = True
 #SECURE_CONTENT_TYPE_NOSNIFF = True
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
@@ -35,7 +36,8 @@ RAVEN_CONFIG = {
     'dsn': os.environ.get('SENTRY_DSN'),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+    'release': os.environ.get['HEROKU_SLUG_COMMIT'],
+
 }
 
 # DATABASE CONFIG
