@@ -22,11 +22,6 @@ ALLOWED_HOSTS = ['comunidadbiblicadefe.herokuapp.com','comunidadbiblicadefe.org'
 #CSRF_COOKIE_SECURE = True
 #SECURE_CONTENT_TYPE_NOSNIFF = True
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
-
 INSTALLED_APPS += (
     'storages',
     'raven.contrib.django.raven_compat',
