@@ -3,7 +3,7 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 from django.utils.translation import ugettext_lazy as _
 from newsletter.utils import make_activation_code
-from .tasks import task_send_email
+from django.core.mail import send_mail
 import os
 
 
@@ -17,7 +17,7 @@ class Subscriber(TimeStampedModel):
                                     )
 
     def save(self, **kwargs):
-        task_send_email.delay(
+        send_mail(
             _('Suscribirse a Comunidad Biblica De Fe'),
             _('Para inscribirse ingrese a esta direccion'),
             os.environ.get('MAILGUN_HOST_USER'),
