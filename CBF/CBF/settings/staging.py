@@ -1,5 +1,6 @@
 from .base import *
 import os
+import raven
 
 DEBUG = True
 
