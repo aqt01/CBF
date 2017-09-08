@@ -36,7 +36,6 @@ RAVEN_CONFIG = {
     'dsn': os.environ.get('SENTRY_DSN'),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
-    'release': os.environ.get['HEROKU_SLUG_COMMIT'],
 
 }
 
