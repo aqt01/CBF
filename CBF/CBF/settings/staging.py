@@ -21,21 +21,6 @@ RAVEN_CONFIG = {
 
     }
 
-# ANYMAIL PRODUCTION CONFIG
-EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ.get('MAILGUN_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_HOST_PASSWORD')
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-ANYMAIL = {
-    'MAILGUN_API_KEY': os.environ.get('MAILGUN_ACTIVATE_KEY'),
-    'MAILGUN_SENDER_DOMAIN': os.environ.get('MAILGUN_SENDER_DOMAIN'),
-}
-
-ANYMAIL_MAILGUN_API_KEY = os.environ.get('MAILGUN_ACTIVATE_KEY')
 
 AWS_STORAGE_BUCKET_NAME = 'comunidadbf-staging'
 

@@ -19,7 +19,6 @@ class Subscriber(TimeStampedModel):
         send_mail(
             _('Suscribirse a Comunidad Biblica De Fe'),
             'Para inscribirse ingrese a esta direccion',
-            'suscripcion@'+ base.DEFAULT_FROM_EMAIL,
             [self.email],
             fail_silently=False,
         )
