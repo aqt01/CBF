@@ -3,6 +3,11 @@
 
 # staging requirements.txt
 
+# AWS storages and buckets management 
 django-storages==1.6.5
 boto==2.48.0
+boto3==1.4.7
+botocore==1.7.7
+
+# Sentry package
 raven==6.1.0

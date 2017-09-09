@@ -1,13 +1,31 @@
-from membership.models import Member
-from sermons.models import Sermon
-import datetime
 from CBF.settings.local import TIME_ZONE
+from CBF.settings.base import BASE_DIR
 
+import boto3
+import datetime
+import os
+
+from membership.models import Member
 from sermons.models import Sermon, Tag
 from events.models import Event
 from thoughts.models import Thought
 
 
+# Download the secrets json necessary for fetching data from youtube
+def download_secrets():
+    s3 = boto3.client('s3')
+    bucket_secret_name = os.environ.get('AWS_STORAGE_BUCKET_SECRET_NAME')
+    list = s3.list_objects(Bucket=bucket_secret_name)['Contents']
+    for s3_key in list:
+        s3_object = s3_key['Key']
+        if not s3_object.endswith("/"):
+            s3.download_file(bucket_secret_name, s3_object, BASE_DIR + '/' + s3_object)
+        else:
+            if not os.path.exists(s3_object):
+                os.makedirs(s3_object)
+
+
+# Search a text string in the different elements (sermon, event, thoughts)
 def elements_text_search(search_text):
     search_result_elements = list()
     search_result_elements.append( Sermon.objects.filter(name__contains=search_text))
@@ -88,7 +106,7 @@ def syncronize_with_youtube(title, video_id, description):
             date_created = datetime.datetime.strptime(elements[2], '%d/%m/%Y')
             date_created = date_created.replace(tzinfo=TIME_ZONE)
             sermon = Sermon.objects.create(name=elements[0], author=member,date_created=date_created,
-            is_published=True,content=elements[3],url=elements[4])
+            is_published=True, content=elements[3],url=elements[4])
             sermon.save()
 
         except Exception:
