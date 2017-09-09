@@ -2,12 +2,12 @@ import os
 from django.utils.translation import ugettext_lazy as _
 import dj_database_url
 
+
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 gettext = lambda s: s
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR)
-
 """
 Django settings for CBF project.
 
@@ -166,7 +166,9 @@ INSTALLED_APPS = (
     'fontawesome',
     'compressor',
     'django_extensions',
-    'analytical'
+    'analytical',
+    'django_celery_results',
+    'django_celery_beat',
 
 )
 
@@ -233,6 +235,10 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Santo_Domingo'
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = 'django-cache'
+
 
 # ANYMAIL PRODUCTION CONFIG
 TEMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django'
