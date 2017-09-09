@@ -95,22 +95,30 @@ def syncronize_with_youtube(title, video_id, description):
     elements.append('https://www.youtube.com/watch?=' + video_id)
     member = None
 
-    try:
+    try: # Check if sermon exist
         sermon_exist = Sermon.objects.get(name=elements[0])
         return
 
     except Exception:
         print( " working with " + title)
-        try:
+        try: # We seek the name of the author if it exist, if not creates the sermon without the author
             member = Member.objects.get(name=elements[1])
             date_created = datetime.datetime.strptime(elements[2], '%d/%m/%Y')
             date_created = date_created.replace(tzinfo=TIME_ZONE)
             sermon = Sermon.objects.create(name=elements[0], author=member,date_created=date_created,
             is_published=True, content=elements[3],url=elements[4])
             sermon.save()
+            return
 
         except Exception:
-            print("Author Doesnt exist in database for sermon: " + title)
+            print("Author Doesnt exist in database for sermon: " + title )
+            print("Using first member as sermon default author for this sermon")
+            member = Member.objects.first()
+            date_created = datetime.datetime.strptime(elements[2], '%d/%m/%Y')
+            date_created = date_created.replace(tzinfo=TIME_ZONE)
+            sermon = Sermon.objects.create(name=elements[0], author=member,date_created=date_created,
+            is_published=True, content=elements[3],url=elements[4])
+            sermon.save()
             return
 
         print("Failed to save " + title)
