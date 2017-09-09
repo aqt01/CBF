@@ -41,7 +41,7 @@ DATABASES = dict(default=dj_database_url.config(default=os.environ.get('DATABASE
 # S3 AWS CONFIG
 
 AWS_STORAGE_BUCKET_NAME = 'comunidadbf'
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_SECRET_KEY_ID')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
