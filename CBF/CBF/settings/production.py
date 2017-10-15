@@ -25,6 +25,8 @@ ALLOWED_HOSTS = ['comunidadbiblicadefe.herokuapp.com','comunidadbiblicadefe.org'
 INSTALLED_APPS += (
     'storages',
     'raven.contrib.django.raven_compat',
+    'opbeat.contrib.django',
+
 )
 
 RAVEN_CONFIG = {
@@ -59,3 +61,12 @@ DEFAULT_FILE_STORAGE = 'CBF.custom_storages.MediaStorage'
 
 GOOGLE_ANALYTICS_PROPERTY_ID = os.environ.get('GOOGLE_ANALYTICS_ID')
 GOOGLE_ANALYTICS_SITE_SPEED = True
+
+
+# OPBEAT CONFIG
+
+OPBEAT = {
+    'ORGANIZATION_ID': os.environ.get('DJANGO_OPBEAT_ORGANIZATION_ID'),
+    'APP_ID': os.environ.get('DJANGO_OPBEAT_APP_ID'),
+    'SECRET_TOKEN': os.environ.get('DJANGO_OPBEAT_SECRET_TOKEN'),
+    }
