@@ -65,6 +65,10 @@ GOOGLE_ANALYTICS_SITE_SPEED = True
 
 # OPBEAT CONFIG
 
+MIDDLEWARE_CLASSES += (
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+    )
+
 OPBEAT = {
     'ORGANIZATION_ID': os.environ.get('DJANGO_OPBEAT_ORGANIZATION_ID'),
     'APP_ID': os.environ.get('DJANGO_OPBEAT_APP_ID'),
