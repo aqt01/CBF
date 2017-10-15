@@ -169,6 +169,8 @@ INSTALLED_APPS = (
     'analytical',
     'django_celery_results',
     'django_celery_beat',
+    'newsletter',
+
 
 )
 
@@ -258,3 +260,8 @@ MAILGUN_SERVER_NAME = os.environ.get('MAILGUN_SENDER_DOMAIN')
 # djangocms googlemap
 
 DJANGOCMS_GOOGLEMAP_API_KEY = os.environ.get('GOOGLE_MAP_API_KEY')
+
+# Django newsletter confirmation
+NEWSLETTER_CONFIRM_EMAIL = True
+NEWSLETTER_EMAIL_DELAY = 0.1
+

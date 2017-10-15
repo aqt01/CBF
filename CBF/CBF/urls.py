@@ -16,6 +16,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
+    url(r'^newsletter/', include('newsletter.urls')),
 
 ]
 
