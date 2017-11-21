@@ -30,7 +30,7 @@ INSTALLED_APPS += (
 )
 
 RAVEN_CONFIG = {
-    'dsn': os.environ.get('SENTRY_DSN'),
+    'dsn': os.environ.get('DJANGO_SENTRY_DSN'),
     # If you are using git, you can also automatically configure the
     # release based on the git info.
 
