@@ -64,7 +64,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 STATIC_ROOT = os.path.join(DATA_DIR, 'static')
-
+print(DATA_DIR)
 
 SITE_ID = 1
 
@@ -115,6 +115,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    # subdomains
+    'subdomains.middleware.SubdomainURLRoutingMiddleware',
+
+
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -151,6 +155,8 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
+
+    # local apps
     'CBF',
     'sermons',
     'thoughts',
@@ -161,6 +167,9 @@ INSTALLED_APPS = (
     'widgets',
     'home',
     'about_us',
+    'tcd',
+
+    # third_party
     'subscribers',
     'anymail',
     'fontawesome',
@@ -170,7 +179,7 @@ INSTALLED_APPS = (
     'django_celery_results',
     'django_celery_beat',
     'newsletter',
-
+    'subdomains',
 
 )
 
@@ -265,3 +274,15 @@ DJANGOCMS_GOOGLEMAP_API_KEY = os.environ.get('GOOGLE_MAP_API_KEY')
 NEWSLETTER_CONFIRM_EMAIL = True
 NEWSLETTER_EMAIL_DELAY = 0.1
 
+
+# django-subdomains
+# defined in ``SUBDOMAIN_URLCONFS``.
+ROOT_URLCONF = 'CBF.urls'
+
+# A dictionary of urlconf module paths, keyed by their subdomain.
+SUBDOMAIN_URLCONFS = {
+    None: 'CBF.urls',  # no subdomain, e.g. ``example.com``
+    'tcd': 'CBF.urls.tcd',
+    'comunidadbiblicadefe': 'CBF.urls.tcd',
+
+}
