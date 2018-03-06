@@ -283,6 +283,6 @@ ROOT_URLCONF = 'CBF.urls'
 SUBDOMAIN_URLCONFS = {
     None: 'CBF.urls',  # no subdomain, e.g. ``example.com``
     'tcd': 'CBF.urls.tcd',
-    'comunidadbiblicadefe': 'CBF.urls.tcd',
+    'tcd.comunidadbiblicadefe': 'CBF.urls.tcd',
 
 }
