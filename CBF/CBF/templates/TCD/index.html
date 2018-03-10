@@ -4,6 +4,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
 {% load  static fontawesome %}
 
 <html>
@@ -20,8 +21,10 @@
 
 		<!-- Header -->
 			<header id="header">
+				{% fontawesome_stylesheet %}
+
 				<h1>Tiempo con Dios</h1>
-				<p> 24,25 y 26 de Marzo <br />
+				<p> 23, 24 y 25 de Marzo <br />
 				Deja que Dios transforme tu vida <a href="http://html5up.net">TCD</a>.</p>
 			</header>
 
@@ -34,10 +37,10 @@
 		<!-- Footer -->
 			<footer id="footer">
 				<ul class="icons">
-					<li><a href="https://twitter.com/comunidadbf"><span class="label">{% fontawesome_icon 'twitter' %}</span></a></li>
-					<li><a href="https://www.instagram.com/comunidadbf/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="https://www.facebook.com/CBiblicadeFe/" class="icon fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="mailto:comunidadbf@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					<li><a href="https://twitter.com/comunidadbf"><span class="label">{% fontawesome_icon 'twitter'  large=True %}</span></a></li>
+					<li><a href="https://www.instagram.com/comunidadbf/" >{% fontawesome_icon 'instagram' large=True  %}</a></li>
+					<li><a href="https://www.facebook.com/CBiblicadeFe/" ><span class="label">{% fontawesome_icon 'facebook' large=True  %}</span></a></li>
+					<li><a href="mailto:comunidadbf@gmail.com" ><span class="label">{% fontawesome_icon 'envelope' large=True %}</span></a></li>
 				</ul>
 				<ul class="copyright">
 					<li>&copy; CBF.</li><li>Por: <a href="http://comunidadbiblicadefe.org"> Comunidad Biblica De Fe </a></li>
