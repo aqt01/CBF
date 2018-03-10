@@ -34,14 +34,20 @@
 	// Slideshow Background.
 		(function() {
 
+			console.log(url);
+			var url_img1 = url.concat("img/bg01.jpg");
+			var url_img2 = url.concat("img/bg02.jpg");
+			var url_img3 = url.concat("img/bg03.jpg");
+
 			// Settings.
 				var settings = {
 
+
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'/static/img/bg01.jpg': 'center',
-							'/static/img/bg02.jpg': 'center',
-							'/static/img/bg03.jpg': 'center'
+							[url_img1]: 'center',
+							[url_img2]: 'center',
+							[url_img3]: 'center'
 						},
 
 					// Delay.
