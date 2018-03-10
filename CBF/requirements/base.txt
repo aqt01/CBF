@@ -112,3 +112,6 @@ django-newsletter==0.6
 
 # subdomains
 django-subdomains==2.1.0
+=======
+#opbeat
+opbeat==3.5.3
