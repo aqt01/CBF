@@ -1,0 +1,9 @@
+Gracias {{ subscription.name }}
+
+Te has suscrito a {{ newsletter.title }}.
+
+Para confirmar tu subscripcion, por favor, confirma el siguiente link
+http://{{ site.domain }}{{ subscription.subscribe_activate_url }}
+
+Con los mejores deseos
+{{ newsletter.sender }}

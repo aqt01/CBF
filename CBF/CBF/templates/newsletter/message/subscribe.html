@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> Subscripcion - {{ newsletter.title }}</title>
+</head>
+<body>
+Hola {{ subscription.name }}
+
+Has enviado una peticion para inscribirte en {{ newsletter.title }}.
+
+Para confirmar tu subscripcion, por favor, confirma el siguiente link
+http://{{ site.domain }}{{ subscription.subscribe_activate_url }}
+
+Bendiciones,
+{{ newsletter.sender }}
+</body>
+</html>

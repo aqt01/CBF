@@ -22,13 +22,14 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^tcd/', include('tcd.urls', namespace='tcd')),
+    url(r'^newsletter/', include('newsletter.urls')),
     url(r'^', include('cms.urls')),
+
 )
 
 # This is only needed when using runserver.
 if settings.DEBUG:
     urlpatterns = [
-        url(r'^newsletter/', include('newsletter.urls')),
 
 
         url(r'^media/(?P<path>.*)$', serve,

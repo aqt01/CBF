@@ -34,7 +34,7 @@
 	// Slideshow Background.
 		(function() {
 
-			console.log(url);
+			
 			var url_img1 = url.concat("img/bg01.jpg");
 			var url_img2 = url.concat("img/bg02.jpg");
 			var url_img3 = url.concat("img/bg03.jpg");
