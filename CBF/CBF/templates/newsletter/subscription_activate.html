@@ -1,15 +1,20 @@
-{% extends "newsletter/common.html" %}
+{% extends "TCD/base.html" %}
+{% load cms_tags static fontawesome  i18n %}
 
-{% load i18n %}
 
-{% block title %}{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %}{% endblock title %}
+{% block title %}{% trans "Confirmación de subscripción para " %} {{ newsletter.title }}  {% endblock title %}
 
-{% block body %}
-    <h1>{% trans "Newsletter" %} {{ newsletter.title }} {{ action }} {% trans "activate" %}</h1>
-
-    <form enctype="multipart/form-data" method="post" action=".">
+{% block content %}
+    <h1>{% trans "Confirmación de subscripción para " %} {{ newsletter.title }} </h1>
+    <header id="header">
+      <form class="signup-form" enctype="multipart/form-data" method="post" action=".">
+        <div class="flex-container">
         {% csrf_token %}
         {{ form.as_p }}
-        <p><input id="id_submit" name="submit" value="{% trans "Activate" %}" type="submit" /></p>
-    </form>
-{% endblock body %}
+
+        <input class="stretch" id="id_submit" name="submit" value="{% trans "Confirmar" %}" type="submit" />
+      </div>
+      </form>
+    </header>
+
+{% endblock content %}
