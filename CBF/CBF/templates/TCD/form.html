@@ -1,47 +1,50 @@
-<!DOCTYPE HTML>
-<!--
-	Eventually by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+{% extends 'TCD/base.html' %}
 
-{% load  static fontawesome %}
+{% load cms_tags static fontawesome %}
 
-<html>
 
-  <header>
-    <link rel="stylesheet" href="{% static "css/form.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/form.css" %}"/>
-    {% fontawesome_stylesheet %}
-  </header>
+{% block content %}
 
-  <body>
-    <div class="login-page">
-      <div class="form">
-        <form class="register-form">
-          {% csrf_token %}
-          {{ form }}
+<!-- Header -->
+	<header id="header">
+		{% fontawesome_stylesheet %}
 
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-          
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form">
-          <input type="text" placeholder="username"/>
-          <input type="password" placeholder="password"/>
-          <button>login</button>
-          <p class="message">Not registered? <a href="#">Create an account</a></p>
-        </form>
-      </div>
-    </div>
+		<h1>Tiempo con Dios</h1>
+		<p> 23, 24 y 25 de Marzo <br />
+		Deja que Dios transforme tu vida </p>
+	</header>
 
-  </body>
+<!-- Signup Form -->
+	<form method="post" class="signup-form" action="{% url 'newsletter_subscribe_request' newsletter_slug='tcd' %}">
+		{% csrf_token %}
 
-  <footer>
-    <script src="{% static "js/form.js" %}"></script>
+    <div class="flex-container">
+      {% csrf_token %}
+      {% if form.email.help_text %}
+      <p class="help">{{ form.email.help_text|safe }}</p>
+      {% endif %}
+      {{ form.as_p }}
 
-  </footer>
+		<input type="submit" value="Registrarse" />
+  </div>
 
-</html>
+	</form>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+var url_redirect = "{% url 'newsletter_subscribe_request' newsletter_slug='tcd' %}";
+
+function SubForm(e){
+	e.preventDefault();
+	var url=$(this).closest('form').attr('action'),
+			data=$(this).closest('form').serialize();
+	$.ajax({
+			url:url_redirect,
+			type:'post',
+			data:data
+			});
+	};
+</script>
+{% endblock%}

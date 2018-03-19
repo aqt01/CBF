@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+
+{% load cms_tags static fontawesome %}
+
+<html>
+	<head>
+		<title>Tiempo con Dios</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="{% static "css/main.css" %}"/>
+		{% fontawesome_stylesheet %}
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+
+    {% block content%}
+    {% endblock %}
+
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://twitter.com/comunidadbf"><span class="label">{% fontawesome_icon 'twitter'  large=True %}</span></a></li>
+					<li><a href="https://www.instagram.com/comunidadbf/" >{% fontawesome_icon 'instagram' large=True  %}</a></li>
+					<li><a href="https://www.facebook.com/CBiblicadeFe/" ><span class="label">{% fontawesome_icon 'facebook' large=True  %}</span></a></li>
+					<li><a href="mailto:comunidadbf@gmail.com" ><span class="label">{% fontawesome_icon 'envelope' large=True %}</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; CBF.</li><li>Por: <a href="http://comunidadbiblicadefe.org"> Comunidad Biblica De Fe </a></li>
+				</ul>
+
+				{% block javascript %}
+				{% endblock javascript %}
+
+				<script>
+					var url = "{% static '' %}";
+				</script>
+				<!-- Scripts -->
+					<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+					<script src="{% static "js/main.js" %}"></script>
+
+			</footer>
+
+
+
+	</body>
+</html>

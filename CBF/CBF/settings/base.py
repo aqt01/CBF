@@ -8,6 +8,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 gettext = lambda s: s
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR)
+
 """
 Django settings for CBF project.
 
@@ -64,7 +65,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 STATIC_ROOT = os.path.join(DATA_DIR, 'static')
-print(DATA_DIR)
 
 SITE_ID = 1
 
@@ -117,7 +117,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # subdomains
     'subdomains.middleware.SubdomainURLRoutingMiddleware',
-
 
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
