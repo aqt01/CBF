@@ -1185,3 +1185,23 @@
 			}
 
 		}
+
+
+		.flex-container {
+	  display: flex;
+	 	flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: space-between;
+	}
+
+input {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+
+.stretch {
+	align-self: center;
+
+}
